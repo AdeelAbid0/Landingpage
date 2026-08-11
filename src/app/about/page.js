@@ -1,3 +1,5 @@
+import AboutPage from "@/components/sections/about/AboutPage";
+
 export const metadata = {
   title: "About Us",
   description:
@@ -7,11 +9,6 @@ export const metadata = {
   },
 };
 
-export default function About() {
-  return (
-    <main>
-      <h1>About Us</h1>
-      <p>Welcome to our about page!</p>
-    </main>
-  );
+export default function Page() {
+  return <AboutPage />;
 }

@@ -1,23 +1,10 @@
-import Link from "next/link";
+import HomePage from "@/components/sections/home/HomePage";
 
-// Home page uses the default title/description from the root layout
-// (`src/app/layout.js`), which is already Prodoo's primary target title —
-// no per-page `metadata` override needed here.
+// This route file stays a thin wrapper: page content lives in
+// src/components/sections/home/HomePage.js, and metadata (title/
+// description/etc.) for "/" comes from the root layout's defaults in
+// src/app/layout.js.
 
-export default function Home() {
-  return (
-    <main>
-      <h1>Prodoo: Global Freelance Hub</h1>
-      <p>
-        Connect with top remote opportunities worldwide. Hire skilled
-        freelancers or find freelance jobs in writing, design, development,
-        marketing, and virtual assistance.
-      </p>
-      <nav aria-label="Primary">
-        <Link href="/about">About Us</Link>
-        {" | "}
-        <Link href="/contact-us">Contact Us</Link>
-      </nav>
-    </main>
-  );
+export default function Page() {
+  return <HomePage />;
 }

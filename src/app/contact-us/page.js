@@ -1,3 +1,5 @@
+import ContactUsPage from "@/components/sections/contact-us/ContactUsPage";
+
 export const metadata = {
   title: "Contact Us",
   description:
@@ -7,10 +9,6 @@ export const metadata = {
   },
 };
 
-export default function Contact() {
-  return (
-    <main>
-      <h1>Contact Us</h1>
-    </main>
-  );
+export default function Page() {
+  return <ContactUsPage />;
 }
