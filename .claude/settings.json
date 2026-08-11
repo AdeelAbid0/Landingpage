@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"c:/Users/Hamza/Desktop/PRODOO/Prodoo_reactjs\" && find . -iname \"*routing*\" -not -path \"*node_modules*\" && echo \"---\" && grep -rl \"publicRoutes\" src/Routes/ | head -20)",
+      "Read(//c/Users/Hamza/Desktop/PRODOO/Prodoo_reactjs/**)",
+      "Bash(cd \"c:/Users/Hamza/Desktop/PRODOO/Prodoo_reactjs\" && find . -not -path \"*node_modules*\" -not -path \"*/.git/*\" | grep -iE \"landing|marketing|home|public\" )"
+    ]
+  }
+}
