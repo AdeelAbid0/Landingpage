@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --color-foreground: #343333;
+  --color-muted-foreground: #878787;
+  --color-primary: #8e81f5;
+}
