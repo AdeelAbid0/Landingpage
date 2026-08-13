@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { siteConfig } from "@/lib/seo/site-config";
 import Navbar from "@/components/layout/Navbar";
 import AntdProvider from "@/components/providers/AntdProvider";
+import QueryProvider from "@/components/providers/QueryProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,10 +51,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable}  h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <AntdProvider>
-          <Navbar />
-          {children}
-        </AntdProvider>
+        <QueryProvider>
+          <AntdProvider>
+            <Navbar />
+            {children}
+          </AntdProvider>
+        </QueryProvider>
       </body>
     </html>
   );

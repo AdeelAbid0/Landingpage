@@ -30,7 +30,6 @@ export const siteConfig = {
     "Freelance work automation",
     "Time tracking for freelancers",
   ],
-  ogImage: "/og-image.png",
   locale: "en_US",
   twitterHandle: "@prodoo",
   sameAs: [
