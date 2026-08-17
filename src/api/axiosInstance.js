@@ -1,7 +1,9 @@
 import axios from "axios";
 
+// Relative on purpose: /webapi/* is same-origin and proxied to the real
+// backend by the rewrite in next.config.mjs (see NEXT_PUBLIC_PROXY there).
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: "/webapi/api/",
   timeout: 60000,
 });
 
