@@ -6,3 +6,23 @@
   --color-muted-foreground: #878787;
   --color-primary: #8e81f5;
 }
+
+/* Continuous horizontal scroller used by the home page's Industries
+   roles list. The track is rendered twice back-to-back and this shifts
+   it exactly one copy's width for a seamless loop. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

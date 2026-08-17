@@ -50,11 +50,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable}  h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+      <body className="h-full flex flex-col overflow-hidden">
         <QueryProvider>
           <AntdProvider>
             <Navbar />
-            {children}
+            <div className="flex-1 overflow-y-auto">{children}</div>
           </AntdProvider>
         </QueryProvider>
       </body>

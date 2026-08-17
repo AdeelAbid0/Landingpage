@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 
 export default function Navbar() {
   return (
-    <header className="border-b border-[#EAE5FC] ">
+    <header className="shrink-0 border-b border-[#EAE5FC]">
       <nav
         aria-label="Primary"
         className="flex w-full items-center justify-between gap-4 px-16 py-5 bg-white"
