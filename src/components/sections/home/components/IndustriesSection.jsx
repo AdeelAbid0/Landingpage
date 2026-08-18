@@ -28,7 +28,7 @@ export default function IndustriesSection() {
     <section className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16">
       <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-188">
         <h2 className="text-foreground text-[40px] font-semibold leading-13">
-          Not sure where to begun
+          Not sure where to begin
         </h2>
         <p className="font-nornal text-muted-foreground text-[16px] leading-6">
           Discover the leading categories of talent highlighted below,

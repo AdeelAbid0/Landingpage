@@ -6,6 +6,8 @@ export const useClientQuery = ({
   url = "",
   enabled = true,
   staleTime = 5 * 60 * 1000, // 5 minutes
+  select,
+  placeholderData,
 }) => {
   return useQuery({
     queryKey: queryKeys.length ? queryKeys : [url],
@@ -13,6 +15,8 @@ export const useClientQuery = ({
     enabled: enabled && !!url,
     staleTime,
     retry: 0,
+    select,
+    placeholderData,
   });
 };
 

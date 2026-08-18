@@ -31,6 +31,7 @@ export const siteConfig = {
     "Time tracking for freelancers",
   ],
   locale: "en_US",
+  ogImage: "/images/hero-image.webp",
   twitterHandle: "@prodoo",
   sameAs: [
     "https://www.facebook.com/Prodoofacebook",

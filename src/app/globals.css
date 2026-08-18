@@ -5,6 +5,14 @@
   --color-foreground: #343333;
   --color-muted-foreground: #878787;
   --color-primary: #8e81f5;
+  --color-company: #02caa8;
+  /* Shadcn-style tokens used by the "How it works" section, ported from
+     Prodoo_reactjs's :root (src/main.css) — light theme values only, since
+     this project doesn't have a dark theme set up yet. */
+  --color-background: #ffffff;
+  --color-card: #ffffff;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-muted: #ececf0;
 }
 
 /* Continuous horizontal scroller used by the home page's Industries
@@ -25,4 +33,19 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Scroll-reveal states, ported same-to-same from Prodoo_reactjs
+   (src/main.css) for sections that fade/slide in via useScrollAnimation. */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
