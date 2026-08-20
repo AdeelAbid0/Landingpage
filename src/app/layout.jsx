@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import AntdProvider from "@/components/providers/AntdProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import "./globals.css";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -54,7 +55,10 @@ export default function RootLayout({ children }) {
         <QueryProvider>
           <AntdProvider>
             <Navbar />
-            <div className="flex-1 overflow-y-auto">{children}</div>
+            <div className="flex-1 overflow-y-auto">
+              {children}
+              <Footer />
+            </div>
           </AntdProvider>
         </QueryProvider>
       </body>
