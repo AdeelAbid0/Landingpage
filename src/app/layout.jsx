@@ -50,12 +50,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable}  h-full antialiased`}>
-      <body className="h-full flex flex-col overflow-hidden">
+    <html lang="en" className={`${inter.variable} antialiased`}>
+      <body className="min-h-screen flex flex-col">
         <QueryProvider>
           <AntdProvider>
             <Navbar />
-            <div className="flex-1 overflow-y-auto">
+            {/* Pages supply their own <main>; this just grows to push the
+                footer to the bottom of the viewport when content is short,
+                and lets the page scroll normally (no clipping) otherwise. */}
+            <div className="flex-1 flex flex-col">
               {children}
               <Footer />
             </div>

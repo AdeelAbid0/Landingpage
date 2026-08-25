@@ -27,7 +27,6 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
       loading={isLoading}
-      suffixIcon={suffixIcon}
       className={`${getWidthClass()} shadow-none! ${
         type === "default"
           ? "text-primary! border border-border! bg-muted-background! background! hover:bg-background/80! hover:text-primary!"

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "@/assets/icons/logo.svg";
 import GlobalSearchIcon from "@/assets/icons/global-search.svg";
 import MedalStarIcon from "@/assets/icons/medal-star.svg";
@@ -47,6 +50,8 @@ const SOCIAL_LINKS = [
 function FooterLink({ href, children }) {
   // Items without an href (e.g. a language switcher) aren't a real page,
   // so they render as a button instead of an anchor.
+  const pathname = usePathname();
+  const isActive = href && href !== "#" && pathname === href;
   const Tag = href ? Link : "button";
   const tagProps = href ? { href } : { type: "button" };
 
@@ -54,9 +59,16 @@ function FooterLink({ href, children }) {
     <li className="flex items-center text-sm font-normal">
       <Tag
         {...tagProps}
-        className="group flex items-center bg-transparent border-0 p-0 cursor-pointer text-muted-foreground hover:text-primary transition-colors duration-300"
+        aria-current={isActive ? "page" : undefined}
+        className={`group flex items-center bg-transparent border-0 p-0 cursor-pointer hover:text-primary transition-colors duration-300 ${
+          isActive ? "text-primary" : "text-muted-foreground"
+        }`}
       >
-        <span className="w-1.5 h-1.5 bg-[#F4F2FE] group-hover:bg-primary rounded-full inline-block mr-2 shrink-0 transition-colors duration-300"></span>
+        <span
+          className={`w-1.5 h-1.5 rounded-full inline-block mr-2 shrink-0 transition-colors duration-300 group-hover:bg-primary ${
+            isActive ? "bg-primary" : "bg-[#F4F2FE]"
+          }`}
+        ></span>
         {children}
       </Tag>
     </li>

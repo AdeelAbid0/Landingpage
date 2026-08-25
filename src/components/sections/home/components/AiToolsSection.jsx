@@ -14,7 +14,7 @@ export default function AiToolsSection() {
         <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
           <ResumeAnalysisIcon /> <h2>Resume analysis</h2>{" "}
           <span className="text-[16px] bg-primary text-white rounded-[99px] flex items-center justify-center w-17.5 -rotate-15 max-h-8">
-            iPro's
+            iPro&apos;s
           </span>
         </div>
         <p className="font-nornal text-muted-foreground text-[16px] leading-6">
