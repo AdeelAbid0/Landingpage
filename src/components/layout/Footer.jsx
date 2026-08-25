@@ -2,40 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { navLinks } from "@/data/nav-links";
 import Logo from "@/assets/icons/logo.svg";
 import GlobalSearchIcon from "@/assets/icons/global-search.svg";
-import MedalStarIcon from "@/assets/icons/medal-star.svg";
+import ShareIcon from "@/assets/icons/share.svg";
 import InstaIcon from "@/assets/icons/instagram.svg";
 import FacebookIcon from "@/assets/icons/facebook.svg";
 import TwitterIcon from "@/assets/icons/twitter.svg";
 import LinkedinIcon from "@/assets/icons/linkedin.svg";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 
-// hrefs mirror the routes used in Navbar's `navLinks` (src/data/nav-links.js)
+// Platform reuses the same links as Navbar's `navLinks` (src/data/nav-links.js)
 // so these labels navigate to the same pages as the header nav.
-// TODO: replace "#" placeholders once a real page/section exists for that link.
 const FOOTER_COLUMNS = [
   {
     title: "Platform",
     Icon: GlobalSearchIcon,
-    links: [
-      { label: "How it works", href: "#" },
-      { label: "AI Features", href: "#" },
-      { label: "ProDoo Apps", href: "/prodoo-apps" },
-      { label: "Testimonials", href: "/testimonials" },
-      { label: "FAQ", href: "#" },
-      { label: "Latest Articles", href: "#" },
-      { label: "A Short Intro Video", href: "#" },
-    ],
-  },
-  {
-    title: "Company",
-    Icon: MedalStarIcon,
-    links: [
-      { label: "About us", href: "/about" },
-      { label: "Contact us", href: "/contact-us" },
-      { label: "Language", href: null },
-    ],
+    links: navLinks,
   },
 ];
 
@@ -77,7 +60,7 @@ function FooterLink({ href, children }) {
 
 function FooterColumn({ title, Icon, links }) {
   return (
-    <div className="flex flex-col w-full max-w-35 gap-6">
+    <div className="flex flex-col w-full gap-6">
       <div className="flex gap-3 items-center">
         <span
           aria-hidden="true"
@@ -87,7 +70,7 @@ function FooterColumn({ title, Icon, links }) {
         </span>
         <h2>{title}</h2>
       </div>
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-row flex-nowrap items-center gap-x-6 gap-y-2">
         {links.map(({ label, href }) => (
           <FooterLink key={label} href={href}>
             {label}
@@ -112,38 +95,55 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav aria-label="Footer" className="contents">
-          {FOOTER_COLUMNS.map((column) => (
-            <FooterColumn key={column.title} {...column} />
-          ))}
-        </nav>
+        <div className="flex flex-col w-full gap-8">
+          <nav aria-label="Footer">
+            {FOOTER_COLUMNS.map((column) => (
+              <FooterColumn key={column.title} {...column} />
+            ))}
+          </nav>
 
-        <nav aria-label="Social media" className="flex flex-col gap-2">
-          {SOCIAL_LINKS.map(({ Icon, label, href }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="group flex justify-between pr-2 items-center border border-[#EAE5FC] rounded-xl w-58 hover:border-primary transition-all duration-300"
-            >
-              <div className="flex gap-3 items-center">
-                <span
-                  aria-hidden="true"
-                  className="w-11 h-11 flex justify-center items-center shrink-0 rounded-xl bg-[#EAE5FC] m-0.5 text-foreground group-hover:text-primary transition-all duration-300"
-                >
-                  <Icon />
-                </span>
-                <p className="text-xs font-medium leading-4">{label}</p>
-              </div>
-              <ArrowIcon
+          <div className="flex flex-col w-full gap-6">
+            <div className="flex gap-3 items-center">
+              <span
                 aria-hidden="true"
-                className="rotate-45 h-4.5 text-muted-foreground group-hover:text-primary transition-all duration-300"
-              />
-            </a>
-          ))}
-        </nav>
+                className="flex justify-center items-center w-8 h-8 bg-[#F4F2FE] rounded-lg"
+              >
+                <ShareIcon />
+              </span>
+              <h2>Social media</h2>
+            </div>
+
+            <nav
+              aria-label="Social media"
+              className="flex flex-row flex-nowrap gap-2"
+            >
+              {SOCIAL_LINKS.map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="group flex justify-between pr-2 items-center border border-[#EAE5FC] rounded-xl w-58 shrink-0 hover:border-primary transition-all duration-300"
+                >
+                  <div className="flex gap-3 items-center">
+                    <span
+                      aria-hidden="true"
+                      className="w-11 h-11 flex justify-center items-center shrink-0 rounded-xl bg-[#EAE5FC] m-0.5 text-foreground group-hover:text-primary transition-all duration-300"
+                    >
+                      <Icon />
+                    </span>
+                    <p className="text-xs font-medium leading-4">{label}</p>
+                  </div>
+                  <ArrowIcon
+                    aria-hidden="true"
+                    className="rotate-45 h-4.5 text-muted-foreground group-hover:text-primary transition-all duration-300"
+                  />
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
       </div>
     </footer>
   );

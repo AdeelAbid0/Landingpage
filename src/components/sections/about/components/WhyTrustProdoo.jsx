@@ -9,7 +9,7 @@ export default function WhyTrustProdoo() {
         aria-labelledby="why-trust-prodoo-heading"
         className="relative flex flex-col w-full items-center overflow-hidden"
       >
-        <div className="flex flex-col gap-2 text-center items-center justify-center mt-16 w-full max-w-188">
+        <div className="flex flex-col gap-2 text-center items-center justify-center my-16 w-full max-w-188">
           <h2
             id="why-trust-prodoo-heading"
             className="text-foreground text-[40px] font-semibold leading-13"

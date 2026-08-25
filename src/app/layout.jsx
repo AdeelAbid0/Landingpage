@@ -90,11 +90,13 @@ export default function RootLayout({ children }) {
         <QueryProvider>
           <AntdProvider>
             <Navbar />
-            {/* Pages supply their own <main>; this just grows to push the
-                footer to the bottom of the viewport when content is short,
-                and lets the page scroll normally (no clipping) otherwise. */}
             <div className="flex-1 flex flex-col">
-              {children}
+              {/* This wrapper (not just its flex-1 parent) has to grow: a
+                  flex-col parent doesn't stretch its children by default,
+                  so without this, short pages left Footer sitting right
+                  under the content instead of pinned to the viewport
+                  bottom. Pages still supply their own <main>. */}
+              <div className="flex-1 flex flex-col">{children}</div>
               <Footer />
             </div>
           </AntdProvider>
