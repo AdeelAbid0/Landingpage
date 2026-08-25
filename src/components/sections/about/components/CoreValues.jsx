@@ -143,12 +143,12 @@ export default function CoreValues() {
         </div>
       </div>
       <div className="flex flex-col gap-2 text-center items-center justify-center w-full max-w-188 mt-2">
-        <h2
+        <h1
           id="core-values-heading"
           className="text-foreground text-[40px] font-semibold leading-13"
         >
           Core Values
-        </h2>
+        </h1>
         <p className="font-normal text-muted-foreground text-[16px] leading-6">
           Our core values shape experiences on Prodoo and connect businesses
           with professionals. Built on trust, innovation, and collaboration,

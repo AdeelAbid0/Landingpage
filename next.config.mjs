@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Don't leak "Next.js" via the x-powered-by response header in production.
+  poweredByHeader: false,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

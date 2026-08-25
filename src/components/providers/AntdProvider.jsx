@@ -11,7 +11,7 @@ export default function AntdProvider({ children }) {
           token: {
             colorPrimary: "#8E81F5",
             borderRadius: 6,
-            fontFamily: "DM Sans, sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
           },
           components: {
             Input: {

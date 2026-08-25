@@ -5,12 +5,12 @@ export default function JoinProdoo() {
   return (
     <div className="border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15">
       <section
-        aria-labelledby="our-impact-heading"
+        aria-labelledby="join-prodoo-heading"
         className="relative flex flex-col w-full items-center overflow-hidden"
       >
         <div className="flex flex-col gap-2 text-center items-center justify-center my-16 w-full max-w-188">
           <h2
-            id="our-impact-heading"
+            id="join-prodoo-heading"
             className="text-foreground text-[40px] font-semibold leading-13"
           >
             Join the Prodoo Community{" "}

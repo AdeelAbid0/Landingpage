@@ -174,7 +174,8 @@ export default function WhyProdooSection() {
           </div>
           <p className="font-nornal text-muted-foreground text-[16px] leading-6">
             Prodoo connects businesses with skilled freelancers, simplifying
-            hiring and collaboration. It's a reliable platform for growth.
+            hiring and collaboration. It&apos;s a reliable platform for
+            growth.
           </p>
         </div>
 

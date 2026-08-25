@@ -26,12 +26,12 @@ export default function WhoWeServe() {
   return (
     <div className="border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15">
       <section
-        aria-labelledby="our-impact-heading"
+        aria-labelledby="who-we-serve-heading"
         className="relative flex flex-col w-full items-center overflow-hidden"
       >
         <div className="flex flex-col gap-2 text-center items-center justify-center my-16 w-full max-w-188">
           <h2
-            id="our-impact-heading"
+            id="who-we-serve-heading"
             className="text-foreground text-[40px] font-semibold leading-13"
           >
             Who We Serve{" "}
