@@ -1,7 +1,15 @@
+import ContactusForm from "./components/ContactusForm";
+import FAQ from "./components/FAQ";
+import Hero from "./components/Hero";
+import WhyProdoo from "./components/WhyProdoo";
+
 export default function ContactUsPage() {
   return (
     <main>
-      <h1>Contact Us</h1>
+      <Hero />
+      <ContactusForm />
+      <WhyProdoo />
+      <FAQ />
     </main>
   );
 }
