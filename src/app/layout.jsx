@@ -71,7 +71,7 @@ const websiteJsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="min-h-screen flex flex-col">
+      <body className="h-screen overflow-hidden flex flex-col">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -90,7 +90,7 @@ export default function RootLayout({ children }) {
         <QueryProvider>
           <AntdProvider>
             <Navbar />
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
               {/* This wrapper (not just its flex-1 parent) has to grow: a
                   flex-col parent doesn't stretch its children by default,
                   so without this, short pages left Footer sitting right

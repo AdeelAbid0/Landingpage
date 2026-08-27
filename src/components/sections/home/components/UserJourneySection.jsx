@@ -198,7 +198,7 @@ export default function UserJourneySection() {
         <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
           <h2>Your Path to Smarter Hiring and Freelancing</h2>
         </div>
-        <p className="font-nornal text-muted-foreground text-[16px] leading-6">
+        <p className="font-normal text-muted-foreground text-[16px] leading-6">
           Prodoo connects businesses and professionals via a secure platform to
           find and hire verified freelancers. Explore global freelance jobs,
           virtual roles, and flexible work-from-home opportunities.

@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/nav-links";
 import Logo from "@/assets/icons/logo.svg";
 import GlobalSearchIcon from "@/assets/icons/global-search.svg";
-import ShareIcon from "@/assets/icons/share.svg";
 import InstaIcon from "@/assets/icons/instagram.svg";
 import FacebookIcon from "@/assets/icons/facebook.svg";
 import TwitterIcon from "@/assets/icons/twitter.svg";
@@ -24,9 +23,21 @@ const FOOTER_COLUMNS = [
 
 // TODO: swap "#" for the real profile URLs once they're available.
 const SOCIAL_LINKS = [
-  { Icon: InstaIcon, label: "Instagram", href: "#" },
-  { Icon: LinkedinIcon, label: "LinkedIn", href: "#" },
-  { Icon: FacebookIcon, label: "Facebook", href: "#" },
+  {
+    Icon: InstaIcon,
+    label: "Instagram",
+    href: "https://www.instagram.com/prodoo_insta?igsh=MThqdjUyaGJicWp6bg%3D%3D",
+  },
+  {
+    Icon: LinkedinIcon,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/prodoofreelancer",
+  },
+  {
+    Icon: FacebookIcon,
+    label: "Facebook",
+    href: "https://www.facebook.com/Prodoofacebook",
+  },
   { Icon: TwitterIcon, label: "Twitter", href: "#" },
 ];
 
@@ -83,7 +94,7 @@ function FooterColumn({ title, Icon, links }) {
 
 export default function Footer() {
   return (
-    <footer className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16">
+    <footer className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 shrink-0">
       <div className="flex w-full gap-27.25 max-w-287">
         <div className="flex flex-col gap-6 w-full max-w-86.5">
           <Link href="/" aria-label="Prodoo home">
@@ -95,7 +106,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex flex-col w-full gap-8">
+        <div className="flex flex-col w-full max-w-170 gap-8">
           <nav aria-label="Footer">
             {FOOTER_COLUMNS.map((column) => (
               <FooterColumn key={column.title} {...column} />
@@ -108,14 +119,14 @@ export default function Footer() {
                 aria-hidden="true"
                 className="flex justify-center items-center w-8 h-8 bg-[#F4F2FE] rounded-lg"
               >
-                <ShareIcon />
+                <GlobalSearchIcon />
               </span>
               <h2>Social media</h2>
             </div>
 
             <nav
               aria-label="Social media"
-              className="flex flex-row flex-nowrap gap-2"
+              className="flex flex-row flex-wrap gap-2"
             >
               {SOCIAL_LINKS.map(({ Icon, label, href }) => (
                 <a
@@ -124,7 +135,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="group flex justify-between pr-2 items-center border border-[#EAE5FC] rounded-xl w-58 shrink-0 hover:border-primary transition-all duration-300"
+                  className="group flex justify-between pr-2 items-center border border-[#EAE5FC] rounded-xl w-full max-w-41 shrink-0 hover:border-primary transition-all duration-300"
                 >
                   <div className="flex gap-3 items-center">
                     <span

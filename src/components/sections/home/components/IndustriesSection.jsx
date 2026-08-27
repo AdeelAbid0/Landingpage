@@ -30,7 +30,7 @@ export default function IndustriesSection() {
         <h2 className="text-foreground text-[40px] font-semibold leading-13">
           Not sure where to begin
         </h2>
-        <p className="font-nornal text-muted-foreground text-[16px] leading-6">
+        <p className="font-normal text-muted-foreground text-[16px] leading-6">
           Discover the leading categories of talent highlighted below,
           showcasing a diverse range of skills and expertise that can elevate
           your projects.

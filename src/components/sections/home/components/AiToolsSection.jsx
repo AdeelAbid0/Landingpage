@@ -17,7 +17,7 @@ export default function AiToolsSection() {
             iPro&apos;s
           </span>
         </div>
-        <p className="font-nornal text-muted-foreground text-[16px] leading-6">
+        <p className="font-normal text-muted-foreground text-[16px] leading-6">
           Optimize your resume using real-time AI and market insights,
           understand what top roles pay and get tips to improve your job
           prospects instantly.
@@ -50,7 +50,7 @@ export default function AiToolsSection() {
               Recruiters{" "}
             </span>
           </div>
-          <p className="font-nornal text-muted-foreground text-[16px] leading-6">
+          <p className="font-normal text-muted-foreground text-[16px] leading-6">
             Leverage AI to instantly connect with top-tier talent. Our
             intelligent system analyzes skills, experience, and cultural fit to
             match you with ideal candidates with 98% accuracy.{" "}

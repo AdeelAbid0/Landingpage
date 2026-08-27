@@ -7,7 +7,7 @@ export default function ProdooWorkflowSection() {
         <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
           <h2>How ProDoo Makes Work Flow</h2>
         </div>
-        <p className="font-nornal text-muted-foreground text-[16px] leading-6">
+        <p className="font-normal text-muted-foreground text-[16px] leading-6">
           Discover how recruiters and iPros connect, collaborate, and grow
           through AI driven tools, smart contracts, and real time productivity
           insights, all in one seamless platform.

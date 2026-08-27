@@ -409,7 +409,7 @@ const HowItWorksSection = ({ labels }) => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10 px-4 mt-14.5 md:mt-16">
+      <div className="max-w-6xl mx-auto relative z-10 mt-16">
         <div
           ref={headerRef}
           className={`text-center animate-on-scroll ${

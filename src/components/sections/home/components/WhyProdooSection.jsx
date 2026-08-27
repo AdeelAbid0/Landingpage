@@ -139,7 +139,7 @@ export default function WhyProdooSection() {
         <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
           <h2>Why Choose Prodoo?</h2>
         </div>
-        <p className="font-nornal text-muted-foreground text-[16px] leading-6">
+        <p className="font-normal text-muted-foreground text-[16px] leading-6">
           Powerful AI driven tools built to simplify remote hiring, streamline
           project management, and boost productivity for businesses and
           freelancers alike.
@@ -172,10 +172,9 @@ export default function WhyProdooSection() {
           <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
             <h3>Why Prodoo is Different</h3>
           </div>
-          <p className="font-nornal text-muted-foreground text-[16px] leading-6">
+          <p className="font-normal text-muted-foreground text-[16px] leading-6">
             Prodoo connects businesses with skilled freelancers, simplifying
-            hiring and collaboration. It&apos;s a reliable platform for
-            growth.
+            hiring and collaboration. It&apos;s a reliable platform for growth.
           </p>
         </div>
 
