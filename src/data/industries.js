@@ -1,7 +1,3 @@
-// Industry categories shown on the home page's "Not sure where to begin"
-// section, each with its own pool of freelance roles rendered in the
-// marquee for that industry.
-
 export const industries = [
   {
     id: "ai-analytics",

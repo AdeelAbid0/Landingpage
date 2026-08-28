@@ -1,7 +1,5 @@
 import BardIcon from "@/assets/icons/bard-fill.svg";
 
-// Single source of truth for the impact stats. Adding/removing an entry
-// here automatically reflows the 3-per-row grid below.
 const IMPACT_STATS = [
   { label: "Registered Freelancers" },
   { label: "Businesses" },

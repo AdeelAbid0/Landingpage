@@ -48,10 +48,6 @@ export const metadata = {
   },
 };
 
-// Site-wide structured data (JSON-LD) so search engines can attribute the
-// site to Prodoo as an Organization (name, social profiles) and as a
-// WebSite. Kept here (rather than per-page) since it describes the site
-// as a whole, not any one page.
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -91,11 +87,6 @@ export default function RootLayout({ children }) {
           <AntdProvider>
             <Navbar />
             <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
-              {/* This wrapper (not just its flex-1 parent) has to grow: a
-                  flex-col parent doesn't stretch its children by default,
-                  so without this, short pages left Footer sitting right
-                  under the content instead of pinned to the viewport
-                  bottom. Pages still supply their own <main>. */}
               <div className="flex-1 flex flex-col">{children}</div>
               <Footer />
             </div>

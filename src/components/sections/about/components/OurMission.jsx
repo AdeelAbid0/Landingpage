@@ -2,8 +2,6 @@ import Image from "next/image";
 import FolderIcon from "@/assets/icons/folder-fill.svg";
 import EyeIcon from "@/assets/icons/eye-line-2.svg";
 
-// Single source of truth for the mission/vision cards. Both cards share the
-// same markup, so this keeps them structurally and visually in sync.
 const MISSION_POINTS = [
   {
     title: "Our Mission",

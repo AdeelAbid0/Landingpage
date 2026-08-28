@@ -10,10 +10,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="shrink-0 border-b border-[#EAE5FC]">
+    <header className="flex w-full justify-center shrink-0 border-b border-[#EAE5FC]">
       <nav
         aria-label="Primary"
-        className="flex w-full items-center justify-between gap-4 px-16 py-5 bg-white"
+        className="flex w-full items-center justify-between gap-4 px-16 py-5 bg-white max-w-360"
       >
         <Link href="/" aria-label="Prodoo home">
           <Logo className="h-11 w-34" role="img" aria-label="Prodoo" />

@@ -12,7 +12,6 @@ const Button = ({
   className,
   width = "auto",
 }) => {
-  // Width classes based on type or prop
   const getWidthClass = () => {
     if (width === "full") return "w-full";
     if (width === "auto") return "w-auto";

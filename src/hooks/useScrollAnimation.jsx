@@ -2,10 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Ported same-to-same from Prodoo_reactjs
-// (src/views-alpha/LandingPage/hooks/useScrollAnimation.jsx) so sections
-// that reuse the old landing page's scroll-reveal behavior (e.g. the "How
-// it works" steps) animate identically to the original SPA.
 export function useScrollAnimation(options = {}) {
   const {
     threshold = 0.1,
@@ -71,7 +67,6 @@ export function useStaggeredAnimation(
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Trigger staggered animations
           for (let i = 0; i < itemCount; i++) {
             setTimeout(
               () => {

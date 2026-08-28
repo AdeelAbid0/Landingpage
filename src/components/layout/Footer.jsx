@@ -11,8 +11,6 @@ import TwitterIcon from "@/assets/icons/twitter.svg";
 import LinkedinIcon from "@/assets/icons/linkedin.svg";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 
-// Platform reuses the same links as Navbar's `navLinks` (src/data/nav-links.js)
-// so these labels navigate to the same pages as the header nav.
 const FOOTER_COLUMNS = [
   {
     title: "Platform",
@@ -21,7 +19,6 @@ const FOOTER_COLUMNS = [
   },
 ];
 
-// TODO: swap "#" for the real profile URLs once they're available.
 const SOCIAL_LINKS = [
   {
     Icon: InstaIcon,
@@ -42,8 +39,6 @@ const SOCIAL_LINKS = [
 ];
 
 function FooterLink({ href, children }) {
-  // Items without an href (e.g. a language switcher) aren't a real page,
-  // so they render as a button instead of an anchor.
   const pathname = usePathname();
   const isActive = href && href !== "#" && pathname === href;
   const Tag = href ? Link : "button";
@@ -94,7 +89,7 @@ function FooterColumn({ title, Icon, links }) {
 
 export default function Footer() {
   return (
-    <footer className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 shrink-0">
+    <footer className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] pt-16 shrink-0">
       <div className="flex w-full gap-27.25 max-w-287">
         <div className="flex flex-col gap-6 w-full max-w-86.5">
           <Link href="/" aria-label="Prodoo home">
@@ -153,6 +148,20 @@ export default function Footer() {
                 </a>
               ))}
             </nav>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-center w-full bg-primary mt-16">
+        <div className="flex items-center justify-between w-full h-17.75 max-w-360 px-16">
+          <div>
+            <h5 className="text-white font-semibold text-sm">
+              © {new Date().getFullYear()} ProDoo Inc.
+            </h5>
+          </div>
+          <div className="flex items-center gap-10 text-white font-semibold text-sm underline">
+            <p className="cursor-pointer">Terms of Service</p>
+            <p className="cursor-pointer">Privacy Policy</p>
+            <p className="cursor-pointer">Cookies</p>
           </div>
         </div>
       </div>

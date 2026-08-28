@@ -1,7 +1,3 @@
-// Split out of Industries.jsx — this section ("Why Businesses and
-// Freelancers Trust Prodoo") isn't about industries, so it gets its own
-// component instead of being bundled under an unrelated name.
-
 export default function WhyTrustProdoo() {
   return (
     <div className="border-t border-[#EAE5FC] relative overflow-hidden">

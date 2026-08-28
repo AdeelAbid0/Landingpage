@@ -1,11 +1,3 @@
-// Single source of truth for site-wide SEO values (brand name, base URL,
-// default description/keywords, social links). Pages, the root layout,
-// robots.js and sitemap.js all read from here so metadata stays consistent
-// across the site instead of being duplicated per file.
-//
-// Ported from the existing React SPA's index.html / structured data
-// (see Prodoo_reactjs/index.html) so the two properties stay in sync.
-
 const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://prodoo.com"
 ).replace(/\/$/, "");

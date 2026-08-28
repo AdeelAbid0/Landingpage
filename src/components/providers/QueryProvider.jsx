@@ -4,14 +4,12 @@ import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function QueryProvider({ children }) {
-  // Created inside useState so each browser session gets its own client
-  // instance instead of sharing one across requests (important for SSR).
   const [queryClient] = useState(
     () =>
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 5 * 60 * 1000, // 5 minutes
+            staleTime: 5 * 60 * 1000,
             retry: 0,
           },
         },
