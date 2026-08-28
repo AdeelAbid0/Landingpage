@@ -10,6 +10,8 @@
   --color-card: #ffffff;
   --color-border: rgba(0, 0, 0, 0.1);
   --color-muted: #ececf0;
+  --color-danger: #ef4444;
+  --color-success: #10b981;
 }
 
 @keyframes marquee {

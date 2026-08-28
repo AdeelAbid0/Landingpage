@@ -28,11 +28,6 @@ const faqItems = [
     label: "Can freelancers contact ProDoo for assistance?",
     children: "N/A",
   },
-  {
-    key: "5",
-    label: "Can freelancers contact ProDoo for assistance?",
-    children: "N/A",
-  },
 ];
 
 export default function FAQ() {

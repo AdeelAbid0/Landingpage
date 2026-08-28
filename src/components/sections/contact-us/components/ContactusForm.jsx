@@ -1,4 +1,7 @@
-import LetterIcon from "@/assets/icons/Letter.svg";
+"use client";
+
+import { useState } from "react";
+import LetterIcon from "@/assets/icons/letter.svg";
 import ClockIcon from "@/assets/icons/clock.svg";
 import ShieldIcon from "@/assets/icons/shield-tick-outlined.svg";
 import PlainIcon from "@/assets/icons/plain.svg";
@@ -23,7 +26,40 @@ const SUPPORT_CARDS = [
   },
 ];
 
+const INITIAL_FORM = { fullName: "", email: "", message: "" };
+
 export default function ContactusForm() {
+  const [form, setForm] = useState(INITIAL_FORM);
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState("idle"); // idle | success
+
+  const handleChange = (field) => (e) => {
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [field]: undefined }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const nextErrors = {};
+    if (!form.fullName.trim()) nextErrors.fullName = "Name is required.";
+    if (!form.email.trim()) {
+      nextErrors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      nextErrors.email = "Enter a valid email address.";
+    }
+    if (!form.message.trim()) nextErrors.message = "Message is required.";
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      return;
+    }
+
+    // TODO: wire this up to the contact-us API endpoint once it's available.
+    setStatus("success");
+    setForm(INITIAL_FORM);
+  };
+
   return (
     <section
       aria-labelledby="contact-form-heading"
@@ -125,34 +161,61 @@ export default function ContactusForm() {
               </p>
             </div>
           </div>
-          <form className="flex flex-col gap-6">
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             <InputText
               name="fullName"
               label="Name *"
               placeholder="Your full name"
               autoComplete="name"
+              value={form.fullName}
+              onChange={handleChange("fullName")}
               required
             />
+            {errors.fullName && (
+              <span className="text-danger text-sm -mt-4">
+                {errors.fullName}
+              </span>
+            )}
             <InputText
               name="email"
               type="email"
               label="Email *"
               placeholder="Your email address"
               autoComplete="email"
+              value={form.email}
+              onChange={handleChange("email")}
               required
             />
+            {errors.email && (
+              <span className="text-danger text-sm -mt-4">
+                {errors.email}
+              </span>
+            )}
             <InputTextArea
               name="message"
               label="Message *"
               placeholder="Your message..."
               rows={8}
+              value={form.message}
+              onChange={handleChange("message")}
               required
             />
+            {errors.message && (
+              <span className="text-danger text-sm -mt-4">
+                {errors.message}
+              </span>
+            )}
             <Button
               type={"primary"}
+              htmlType={"submit"}
               label="Send message"
               className="rounded-[10px]!"
             />
+            {status === "success" && (
+              <p className="text-success text-sm font-medium">
+                Thanks for reaching out! We&apos;ll get back to you soon.
+              </p>
+            )}
             <p className="text-muted-foreground text-xs font-medium leading-4">
               By submitting this form, you agree to our{" "}
               <span className="text-primary">Privacy Policy</span> and{" "}

@@ -2,6 +2,7 @@ import { Button as AntdButton } from "antd";
 
 const Button = ({
   type,
+  htmlType,
   size,
   label,
   onClick,
@@ -22,13 +23,14 @@ const Button = ({
   return (
     <AntdButton
       type={type}
+      htmlType={htmlType}
       size={size}
       onClick={onClick}
       disabled={disabled}
       loading={isLoading}
       className={`${getWidthClass()} shadow-none! ${
         type === "default"
-          ? "text-primary! border border-border! bg-muted-background! background! hover:bg-background/80! hover:text-primary!"
+          ? "text-primary! border border-border! bg-muted! hover:bg-background/80! hover:text-primary!"
           : type === "danger"
             ? "text-danger! font-medium! bg-[#FEE2E2]! border border-[#FCA5A5]! hover:bg-[#FEE2E2]/80! hover:text-danger!"
             : type === "link"
@@ -36,7 +38,7 @@ const Button = ({
               : type === "text"
                 ? "text-primary! bg-transparent! border-none! shadow-none! hover:bg-transparent! hover:text-primary/80!"
                 : type === "success"
-                  ? "text-success! font-medium! bg-[#D1FAE5]! border border-[#10B981]! hover:bg-[#D1FAE5]/80! hover:text-success!"
+                  ? "text-success! font-medium! bg-[#D1FAE5]! border border-success! hover:bg-[#D1FAE5]/80! hover:text-success!"
                   : type === "outline"
                     ? "text-primary! border border-primary! bg-white!"
                     : ""

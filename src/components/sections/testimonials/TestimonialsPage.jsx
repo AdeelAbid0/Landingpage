@@ -1,7 +1,11 @@
-export default function TestimonialsPage() {
+import Hero from "./components/Hero";
+import Testimonials from "./components/Testimonials";
+
+export default function BlogsPage() {
   return (
     <main>
-      <h1>Testimonials</h1>
+      <Hero />
+      <Testimonials />
     </main>
   );
 }
