@@ -1,8 +1,17 @@
+"use client";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 export default function WhyProdoo() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
     <section
+      ref={elementRef}
       aria-labelledby="why-prodoo-apps-heading"
-      className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16"
+      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
     >
       <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-300">
         <h2

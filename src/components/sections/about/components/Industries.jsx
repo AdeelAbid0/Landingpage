@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const INDUSTRIES = [
   {
@@ -35,11 +38,16 @@ function IndustryCard({ src, label }) {
 }
 
 export default function Industries() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
     <div className="border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15">
       <section
+        ref={elementRef}
         aria-labelledby="industries-heading"
-        className="relative flex flex-col w-full items-center overflow-hidden mb-16"
+        className={`relative flex flex-col w-full items-center overflow-hidden mb-16 animate-on-scroll ${
+          isVisible ? "animate-visible" : ""
+        }`}
       >
         <div className="flex flex-col gap-2 text-center items-center justify-center my-16 w-full max-w-188">
           <h2

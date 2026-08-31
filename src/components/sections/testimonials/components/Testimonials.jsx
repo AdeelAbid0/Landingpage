@@ -1,6 +1,9 @@
+"use client";
+
 import CommaIcon from "@/assets/icons/double-quotes.svg";
 import BardIcon from "@/assets/icons/bard-fill.svg";
 import Image from "next/image";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const TESTIMONIALS = [
   {
@@ -101,8 +104,15 @@ function TestimonialCard({ rating, title, description, avatar, name, role }) {
 }
 
 export default function Testimonials() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
-    <section className="flex w-full justify-center mb-16">
+    <section
+      ref={elementRef}
+      className={`flex w-full justify-center mb-16 animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
+    >
       <div className="grid w-full grid-cols-3 gap-6 max-w-300">
         {TESTIMONIALS.map(({ key, ...testimonial }) => (
           <TestimonialCard key={key} {...testimonial} />

@@ -1,4 +1,7 @@
+"use client";
+
 import BardIcon from "@/assets/icons/bard-fill.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const IMPACT_STATS = [
   { label: "Businesses" },
@@ -23,11 +26,16 @@ function ImpactStat({ label }) {
 }
 
 export default function WhoWeServe() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
     <div className="border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15">
       <section
+        ref={elementRef}
         aria-labelledby="who-we-serve-heading"
-        className="relative flex flex-col w-full items-center overflow-hidden"
+        className={`relative flex flex-col w-full items-center overflow-hidden animate-on-scroll ${
+          isVisible ? "animate-visible" : ""
+        }`}
       >
         <div className="flex flex-col gap-2 text-center items-center justify-center my-16 w-full max-w-188">
           <h2

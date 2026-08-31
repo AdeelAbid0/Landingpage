@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const THEME_TEXT = {
   primary: "text-primary",
@@ -20,6 +23,7 @@ export default function AppShowcaseSection({
   children,
 }) {
   const headingId = `${id}-heading`;
+  const { elementRef, isVisible } = useScrollAnimation();
 
   const imageBlock = (
     <div className="flex w-full max-w-121.5">
@@ -59,7 +63,14 @@ export default function AppShowcaseSection({
   );
 
   return (
-    <section id={id} aria-labelledby={headingId} className={sectionClassName}>
+    <section
+      ref={elementRef}
+      id={id}
+      aria-labelledby={headingId}
+      className={`${sectionClassName} animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
+    >
       {wrapperClassName ? <div className={wrapperClassName}>{row}</div> : row}
     </section>
   );

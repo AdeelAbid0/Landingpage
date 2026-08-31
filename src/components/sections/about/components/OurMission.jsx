@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import FolderIcon from "@/assets/icons/folder-fill.svg";
 import EyeIcon from "@/assets/icons/eye-line-2.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const MISSION_POINTS = [
   {
@@ -38,11 +41,16 @@ function MissionCard({ title, Icon, iconClassName, description }) {
 }
 
 export default function OurMission() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
     <div className="border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15">
       <section
+        ref={elementRef}
         aria-labelledby="our-mission-heading"
-        className="relative flex flex-col w-full items-center overflow-hidden"
+        className={`relative flex flex-col w-full items-center overflow-hidden animate-on-scroll ${
+          isVisible ? "animate-visible" : ""
+        }`}
       >
         <div className="absolute inset-0 -z-10">
           <Image

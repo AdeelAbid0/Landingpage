@@ -8,6 +8,7 @@ import PlainIcon from "@/assets/icons/plain.svg";
 import InputText from "@/components/ui/InputText";
 import InputTextArea from "@/components/ui/InputTextArea";
 import Button from "@/components/ui/Button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const SUPPORT_CARDS = [
   {
@@ -32,6 +33,7 @@ export default function ContactusForm() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | success
+  const { elementRef, isVisible } = useScrollAnimation();
 
   const handleChange = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
@@ -62,8 +64,11 @@ export default function ContactusForm() {
 
   return (
     <section
+      ref={elementRef}
       aria-labelledby="contact-form-heading"
-      className="flex w-full justify-center pt-16"
+      className={`flex w-full justify-center pt-16 animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
     >
       <div className="flex w-full items-center max-w-300 gap-31.5">
         <div className="flex flex-col w-full items-center max-w-148 gap-6">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { industries } from "@/data/industries";
 import SegmentedUi from "@/components/ui/SegmentedUi";
 import ShareIcon from "@/assets/icons/share.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const industryOptions = industries.map(({ id, name }) => ({
   label: name,
@@ -23,9 +24,15 @@ const roleIconColors = [
 export default function IndustriesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndustry = industries[activeIndex];
+  const { elementRef, isVisible } = useScrollAnimation();
 
   return (
-    <section className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16">
+    <section
+      ref={elementRef}
+      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
+    >
       <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-188">
         <h2 className="text-foreground text-[40px] font-semibold leading-13">
           Not sure where to begin

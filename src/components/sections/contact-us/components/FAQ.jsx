@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CollapseUi from "@/components/ui/CollapseUi";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const VISIBLE_COUNT = 4;
 
@@ -33,11 +34,15 @@ const faqItems = [
 export default function FAQ() {
   const [showAll, setShowAll] = useState(false);
   const visibleItems = showAll ? faqItems : faqItems.slice(0, VISIBLE_COUNT);
+  const { elementRef, isVisible } = useScrollAnimation();
 
   return (
     <section
+      ref={elementRef}
       aria-labelledby="faq-heading"
-      className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16"
+      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
     >
       <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-207">
         <h2

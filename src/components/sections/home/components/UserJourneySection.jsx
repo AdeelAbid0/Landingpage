@@ -3,6 +3,7 @@
 import { useState } from "react";
 import BardIcon from "@/assets/icons/bard-fill.svg";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const VISIBLE_COUNT = 3;
 
@@ -192,8 +193,15 @@ function FeatureGroup({ group }) {
 }
 
 export default function UserJourneySection() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
-    <section className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16">
+    <section
+      ref={elementRef}
+      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
+    >
       <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-188">
         <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
           <h2>Your Path to Smarter Hiring and Freelancing</h2>

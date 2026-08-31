@@ -1,12 +1,20 @@
+"use client";
+
 import Button from "@/components/ui/Button";
 import ArrowIcon from "@/assets/icons/send.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function JoinProdoo() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
     <div className="border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15">
       <section
+        ref={elementRef}
         aria-labelledby="join-prodoo-heading"
-        className="relative flex flex-col w-full items-center overflow-hidden"
+        className={`relative flex flex-col w-full items-center overflow-hidden animate-on-scroll ${
+          isVisible ? "animate-visible" : ""
+        }`}
       >
         <div className="flex flex-col gap-2 text-center items-center justify-center my-16 w-full max-w-188">
           <h2

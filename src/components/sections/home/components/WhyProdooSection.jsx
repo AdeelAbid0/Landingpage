@@ -7,6 +7,7 @@ import GolbalSearchIcon from "@/assets/icons/global-search.svg";
 import SecuritySafeIcon from "@/assets/icons/security-safe.svg";
 import CancelIcon from "@/assets/icons/cancel.svg";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const whyProdooFeatures = [
   {
@@ -132,9 +133,15 @@ function HiringPointsList({ points, borderClass, iconClassName, expanded }) {
 
 export default function WhyProdooSection() {
   const [expanded, setExpanded] = useState(false);
+  const { elementRef, isVisible } = useScrollAnimation();
 
   return (
-    <section className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16">
+    <section
+      ref={elementRef}
+      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
+    >
       <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-188">
         <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
           <h2>Why Choose Prodoo?</h2>

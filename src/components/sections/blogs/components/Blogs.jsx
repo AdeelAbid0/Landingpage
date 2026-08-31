@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const BLOGS = [
   {
@@ -28,7 +31,7 @@ const BLOGS = [
     key: "3",
     image: { src: "/images/blog3.webp", alt: "blog 3" },
     category: "Platform How To",
-    categoryClassName: "text-foreground",
+    categoryClassName: "text-[#D86B44]",
     title: "Are You Really in the Right Niche?",
     description: "You chose your niche. But is it choosing you back?",
     readTime: "6 min read",
@@ -97,8 +100,15 @@ function BlogCard({
 }
 
 export default function Blogs() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
-    <section className="flex w-full justify-center">
+    <section
+      ref={elementRef}
+      className={`flex w-full justify-center animate-on-scroll ${
+        isVisible ? "animate-visible" : ""
+      }`}
+    >
       <div className="w-full max-w-300">
         <div className="grid grid-cols-2 gap-6 w-full">
           {BLOGS.map(({ key, ...blog }) => (
