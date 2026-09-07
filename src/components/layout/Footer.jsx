@@ -87,7 +87,15 @@ function FooterColumn({ title, Icon, links }) {
   );
 }
 
+const HIDDEN_FOOTER_ROUTES = ["/browse-jobs"];
+
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (HIDDEN_FOOTER_ROUTES.includes(pathname)) {
+    return null;
+  }
+
   return (
     <footer className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] pt-16 shrink-0">
       <div className="flex w-full gap-27.25 max-w-287">
