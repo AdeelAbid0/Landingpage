@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { industries } from "@/data/industries";
 import SegmentedUi from "@/components/ui/SegmentedUi";
 import ShareIcon from "@/assets/icons/share.svg";
@@ -22,6 +23,7 @@ const roleIconColors = [
 ];
 
 export default function IndustriesSection() {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndustry = industries[activeIndex];
   const { elementRef, isVisible } = useScrollAnimation();
@@ -81,6 +83,9 @@ export default function IndustriesSection() {
           </div>
           <button
             type="button"
+            onClick={() => {
+              router.push("/industries");
+            }}
             className="mt-6 cursor-pointer flex h-8.25 w-18.75 shrink-0 items-center justify-center rounded-full border border-[#EAE5FC] bg-[#F4F2FE] text-xs font-medium text-primary"
           >
             View all

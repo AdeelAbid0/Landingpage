@@ -81,9 +81,9 @@ function TestimonialCard({ rating, title, description, avatar, name, role }) {
         </span>
       </div>
       <div className="flex flex-col gap-4 mt-4">
-        <h1 className="text-foreground text-2xl! leading-7 font-semibold!">
+        <h2 className="text-foreground text-2xl! leading-7 font-semibold!">
           {title}
-        </h1>
+        </h2>
         <p className="text-muted-foreground text-[16px] font-normal! leading-6">
           {description}
         </p>
