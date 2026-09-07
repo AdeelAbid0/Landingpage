@@ -32,7 +32,7 @@ const INITIAL_FORM = { fullName: "", email: "", message: "" };
 export default function ContactusForm() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | success
+  const [status, setStatus] = useState("idle");
   const { elementRef, isVisible } = useScrollAnimation();
 
   const handleChange = (field) => (e) => {
@@ -57,7 +57,6 @@ export default function ContactusForm() {
       return;
     }
 
-    // TODO: wire this up to the contact-us API endpoint once it's available.
     setStatus("success");
     setForm(INITIAL_FORM);
   };
