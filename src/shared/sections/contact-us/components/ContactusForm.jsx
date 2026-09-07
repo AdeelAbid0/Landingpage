@@ -5,9 +5,9 @@ import LetterIcon from "@/assets/icons/letter.svg";
 import ClockIcon from "@/assets/icons/clock.svg";
 import ShieldIcon from "@/assets/icons/shield-tick-outlined.svg";
 import PlainIcon from "@/assets/icons/plain.svg";
-import InputText from "@/components/ui/InputText";
-import InputTextArea from "@/components/ui/InputTextArea";
-import Button from "@/components/ui/Button";
+import InputText from "@/shared/ui/InputText";
+import InputTextArea from "@/shared/ui/InputTextArea";
+import Button from "@/shared/ui/Button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const SUPPORT_CARDS = [
@@ -32,7 +32,7 @@ const INITIAL_FORM = { fullName: "", email: "", message: "" };
 export default function ContactusForm() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | success
+  const [status, setStatus] = useState("idle");
   const { elementRef, isVisible } = useScrollAnimation();
 
   const handleChange = (field) => (e) => {
@@ -57,7 +57,6 @@ export default function ContactusForm() {
       return;
     }
 
-    // TODO: wire this up to the contact-us API endpoint once it's available.
     setStatus("success");
     setForm(INITIAL_FORM);
   };

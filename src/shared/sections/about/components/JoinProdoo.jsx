@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/ui/Button";
+import Button from "@/shared/ui/Button";
 import ArrowIcon from "@/assets/icons/send.svg";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 

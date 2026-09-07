@@ -1,4 +1,4 @@
-import AboutPage from "@/components/sections/about/AboutPage";
+import AboutPage from "@/shared/sections/about/AboutPage";
 
 export const metadata = {
   title: "About Us",

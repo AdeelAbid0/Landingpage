@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/nav-links";
 import Logo from "@/assets/icons/logo.svg";
-import Button from "@/components/ui/Button";
+import Button from "@/shared/ui/Button";
 
 export default function Navbar() {
   const pathname = usePathname();

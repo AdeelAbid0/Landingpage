@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { industries } from "@/data/industries";
-import SegmentedUi from "@/components/ui/SegmentedUi";
+import SegmentedUi from "@/shared/ui/SegmentedUi";
 import ShareIcon from "@/assets/icons/share.svg";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
