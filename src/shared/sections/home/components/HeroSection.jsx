@@ -1,7 +1,92 @@
 import Image from "next/image";
 import LampIcon from "@/assets/icons/lamp-charge.svg";
+import CheckmarkIcon from "@/assets/icons/checkmark.svg";
 import { useRouter } from "next/navigation";
 import SearchBar from "@/shared/components/SearchBar";
+
+const ROLE_CARDS = [
+  {
+    key: "recruiters",
+    illustrationSrc: "/images/Illustration-1.png",
+    gradient: "linear-gradient(108.88deg, #02C1A1 2.1%, #015B4C 98.19%)",
+    borderColor: "#B1EFE4",
+    badgeColor: "#017965",
+    corner: "rounded-tl-[20px] rounded-bl-[20px]",
+    label: "For Recruiters",
+    steps: [
+      "Post Jobs in Seconds with AI",
+      "Review Top Matched Talent",
+      "Hire & Manage Contracts",
+    ],
+  },
+  {
+    key: "freelancers",
+    illustrationSrc: "/images/Illustration-2.png",
+    gradient: "linear-gradient(109deg, #7B70D4 1.62%, #403A6E 97.64%)",
+    borderColor: "#DCD8FC",
+    badgeColor: "#403A6E",
+    corner: "rounded-tr-[20px] rounded-br-[20px]",
+    label: "For Freelancers",
+    steps: [
+      "Browse Global Opportunities",
+      "Apply in One Click",
+      "Get Hired & Start Earning",
+    ],
+  },
+];
+
+function StepsList({ steps }) {
+  return (
+    <div className="mt-6 flex flex-col gap-6">
+      {steps.map((step, index) => (
+        <div key={step} className="flex items-center gap-4">
+          <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-[#F1F1F1]">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white">
+              <CheckmarkIcon />
+            </span>
+            {index < steps.length - 1 && (
+              <div className="absolute top-full left-1/2 mt-1 h-4 -translate-x-1/2 border-l-2 border-dashed border-[#E9E9E9]" />
+            )}
+          </div>
+          <p className="text-[16px] font-medium leading-7 text-white">{step}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function RoleCard({
+  illustrationSrc,
+  gradient,
+  borderColor,
+  badgeColor,
+  corner,
+  label,
+  steps,
+}) {
+  return (
+    <div
+      className={`relative flex h-61.5 w-full flex-col overflow-hidden border p-6 ${corner}`}
+      style={{ background: gradient, borderColor }}
+    >
+      <Image
+        src={illustrationSrc}
+        alt=""
+        width={311}
+        height={214}
+        className="absolute"
+        style={{ left: 100, top: 28 }}
+      />
+      <span
+        className="flex self-start rounded-full border px-2.5 py-2 text-xs font-medium text-white"
+        style={{ backgroundColor: badgeColor, borderColor }}
+      >
+        {label}
+      </span>
+      <StepsList steps={steps} />
+    </div>
+  );
+}
 
 export default function HeroSection() {
   const router = useRouter();
@@ -96,7 +181,11 @@ export default function HeroSection() {
             How it works
           </h2>
         </div>
-        <div className="mt-8"></div>
+        <div className="flex w-full max-w-208 mt-8 mb-12">
+          {ROLE_CARDS.map((card) => (
+            <RoleCard key={card.key} {...card} />
+          ))}
+        </div>
       </div>
     </section>
   );
