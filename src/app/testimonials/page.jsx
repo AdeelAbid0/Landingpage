@@ -1,4 +1,4 @@
-import TestimonialsPage from "@/components/sections/testimonials/TestimonialsPage";
+import TestimonialsPage from "@/shared/sections/testimonials/TestimonialsPage";
 
 export const metadata = {
   title: "Testimonials",

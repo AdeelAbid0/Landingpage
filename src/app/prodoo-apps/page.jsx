@@ -1,4 +1,4 @@
-import ProdooAppsPage from "@/components/sections/prodoo-apps/ProdooAppsPage";
+import ProdooAppsPage from "@/shared/sections/prodoo-apps/ProdooAppsPage";
 
 export const metadata = {
   title: "Prodoo Apps",

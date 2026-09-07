@@ -1,4 +1,4 @@
-import BlogsPage from "@/components/sections/blogs/BlogsPage";
+import BlogsPage from "@/shared/sections/blogs/BlogsPage";
 
 export const metadata = {
   title: "Blogs",

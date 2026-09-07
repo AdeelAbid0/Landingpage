@@ -5,9 +5,9 @@ import LetterIcon from "@/assets/icons/letter.svg";
 import ClockIcon from "@/assets/icons/clock.svg";
 import ShieldIcon from "@/assets/icons/shield-tick-outlined.svg";
 import PlainIcon from "@/assets/icons/plain.svg";
-import InputText from "@/components/ui/InputText";
-import InputTextArea from "@/components/ui/InputTextArea";
-import Button from "@/components/ui/Button";
+import InputText from "@/shared/ui/InputText";
+import InputTextArea from "@/shared/ui/InputTextArea";
+import Button from "@/shared/ui/Button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const SUPPORT_CARDS = [

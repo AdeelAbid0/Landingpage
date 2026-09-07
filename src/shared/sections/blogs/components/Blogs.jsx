@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Button from "@/components/ui/Button";
+import Button from "@/shared/ui/Button";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 

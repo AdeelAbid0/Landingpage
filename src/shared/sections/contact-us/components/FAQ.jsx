@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import CollapseUi from "@/components/ui/CollapseUi";
+import CollapseUi from "@/shared/ui/CollapseUi";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 

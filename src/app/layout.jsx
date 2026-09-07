@@ -1,10 +1,10 @@
 import { Inter } from "next/font/google";
 import { siteConfig } from "@/lib/seo/site-config";
-import Navbar from "@/components/layout/Navbar";
-import AntdProvider from "@/components/providers/AntdProvider";
-import QueryProvider from "@/components/providers/QueryProvider";
+import Navbar from "@/shared/layout/Navbar";
+import AntdProvider from "@/shared/providers/AntdProvider";
+import QueryProvider from "@/shared/providers/QueryProvider";
 import "./globals.css";
-import Footer from "@/components/layout/Footer";
+import Footer from "@/shared/layout/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
