@@ -1,7 +1,7 @@
 import Image from "next/image";
 import LampIcon from "@/assets/icons/lamp-charge.svg";
-import SearchIcon from "@/assets/icons/search-border.svg";
 import { useRouter } from "next/navigation";
+import SearchBar from "@/shared/components/SearchBar";
 
 export default function HeroSection() {
   const router = useRouter();
@@ -53,20 +53,7 @@ export default function HeroSection() {
         </p>
       </div>
       <div className="flex flex-col w-full max-w-209 justify-center gap-6 mt-15 mb-6">
-        <div className="flex w-full items-center gap-2 rounded-full border-2 border-transparent bg-[linear-gradient(#fff,#fff),linear-gradient(90deg,#3864FD_0%,#D22CFF_100%)] bg-origin-border px-6 py-3 shadow-[0px_0px_0px_3px_#D32DFF40,0px_0px_0px_6px_#D22CFF21,0px_0px_0px_9px_#D22CFF12,0px_0px_0px_12px_#D22CFF0A] [background-clip:padding-box,border-box]">
-          <input
-            type="text"
-            placeholder="Describe what you need to hire for..."
-            className="w-full bg-transparent text-[14px] font-semibold text-foreground outline-none placeholder:bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_24.74%)] placeholder:bg-clip-text placeholder:text-transparent"
-          />
-          <button
-            type="button"
-            className="flex h-10 w-27.5 shrink-0 items-center justify-center gap-2 rounded-full border border-white bg-[linear-gradient(270deg,#3864FD_0%,#D22CFF_50%)] text-[14px]! font-normal! text-white shadow-[0px_4px_4px_0px_#FFFFFF40_inset,0px_-4px_4px_0px_#FFFFFF40_inset,4px_0px_4px_0px_#FFFFFF40_inset,-4px_4px_4px_0px_#FFFFFF40_inset]"
-          >
-            <SearchIcon className="w-5 h-5" />
-            Search
-          </button>
-        </div>
+        <SearchBar />
         <div className="flex w-full justify-between">
           <div className="flex items-center gap-3">
             <div className="text-foreground text-xs! font-medium! border border-[#DCD8FC] px-2.5 py-2 rounded-full">
