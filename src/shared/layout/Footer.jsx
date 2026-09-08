@@ -87,7 +87,7 @@ function FooterColumn({ title, Icon, links }) {
   );
 }
 
-const HIDDEN_FOOTER_ROUTES = ["/browse-jobs"];
+const HIDDEN_FOOTER_ROUTES = ["/browse-jobs", "/post-job"];
 
 export default function Footer() {
   const pathname = usePathname();

@@ -1,13 +1,12 @@
 import ResumeCard from "@/shared/components/ResumeCard";
+import { buildMetadata } from "@/lib/seo/site-config";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "Industries",
   description:
     "Browse top freelance talent across creative, design, media, and other leading industries on Prodoo.",
-  alternates: {
-    canonical: "/industries",
-  },
-};
+  path: "/industries",
+});
 
 const skills = [
   "Graphic Design",

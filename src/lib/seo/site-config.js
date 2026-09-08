@@ -31,3 +31,36 @@ export const siteConfig = {
     "https://www.linkedin.com/company/prodoofreelancer",
   ],
 };
+
+/**
+ * Builds a page's metadata object, including per-page Open Graph and
+ * Twitter tags so each route shows its own title/description when shared
+ * on social platforms instead of falling back to the root layout's.
+ */
+export function buildMetadata({ title, description, path, images }) {
+  const ogImages = images || [siteConfig.ogImage];
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: path,
+    },
+    openGraph: {
+      type: "website",
+      url: `${siteConfig.url}${path}`,
+      siteName: siteConfig.name,
+      title,
+      description,
+      images: ogImages,
+      locale: siteConfig.locale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.twitterHandle,
+      title,
+      description,
+      images: ogImages,
+    },
+  };
+}

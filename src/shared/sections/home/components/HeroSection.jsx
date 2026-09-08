@@ -117,6 +117,9 @@ function RoleCard({
 
 export default function HeroSection() {
   const router = useRouter();
+  const handleSearch = () => {
+    router.push("/post-job");
+  };
   return (
     <section className="relative flex flex-col w-full items-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
@@ -176,7 +179,7 @@ export default function HeroSection() {
           />
         </div>
         <div className="flex flex-col w-full max-w-209 justify-center gap-6 mt-8 mb-6">
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
           <div className="flex w-full justify-between">
             <div className="flex items-center gap-3">
               <div className="text-foreground text-xs! font-medium! border border-[#DCD8FC] px-2.5 py-2 rounded-full">
@@ -216,8 +219,8 @@ export default function HeroSection() {
             </h2>
           </div>
           <div className="flex w-full max-w-208 gap-0 mt-8 mb-12">
-            {ROLE_CARDS.map((card) => (
-              <RoleCard key={card.key} {...card} />
+            {ROLE_CARDS.map(({ key, ...card }) => (
+              <RoleCard key={key} {...card} />
             ))}
           </div>
         </div>
