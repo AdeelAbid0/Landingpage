@@ -113,7 +113,7 @@ export default function Testimonials() {
         isVisible ? "animate-visible" : ""
       }`}
     >
-      <div className="grid w-full grid-cols-3 gap-6 max-w-300">
+      <div className="grid w-full grid-cols-3 gap-6 max-w-300 mt-16">
         {TESTIMONIALS.map(({ key, ...testimonial }) => (
           <TestimonialCard key={key} {...testimonial} />
         ))}
