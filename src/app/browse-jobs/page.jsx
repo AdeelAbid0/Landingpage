@@ -1,3 +1,5 @@
+import BrowseJobsPage from "@/shared/sections/browse-jobs/BrowseJobsPage";
+
 export const metadata = {
   title: "Browse Jobs",
   description:
@@ -8,9 +10,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return (
-    <div>
-      <h1>Browse Jobs</h1>
-    </div>
-  );
+  return <BrowseJobsPage />;
 }

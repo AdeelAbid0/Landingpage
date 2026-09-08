@@ -216,8 +216,8 @@ export default function HeroSection() {
             </h2>
           </div>
           <div className="flex w-full max-w-208 gap-0 mt-8 mb-12">
-            {ROLE_CARDS.map((card) => (
-              <RoleCard key={card.key} {...card} />
+            {ROLE_CARDS.map(({ key, ...card }) => (
+              <RoleCard key={key} {...card} />
             ))}
           </div>
         </div>
