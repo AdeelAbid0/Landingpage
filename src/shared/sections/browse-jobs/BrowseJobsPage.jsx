@@ -1,11 +1,9 @@
-import Hero from "./components/Hero";
-import Jobs from "./components/Jobs";
+import Step1 from "./components/Step1";
 
 export default function BrowseJobsPage() {
   return (
     <main>
-      <Hero />
-      <Jobs />
+      <Step1 />
     </main>
   );
 }
