@@ -31,7 +31,11 @@ export default function Postjob() {
   };
 
   return (
-    <main className="relative flex flex-col h-[calc(100vh-73px)] w-full">
+    <main
+      className={`relative flex flex-col h-[calc(100vh-73px)] w-full overflow-y-auto ${
+        step !== 1 ? "pb-17" : ""
+      }`}
+    >
       {step === 1 && <Step1 />}
       {step === 2 && <Step2 setStep={setStep} />}
       {step === 3 && <Step3 setStep={setStep} />}
@@ -40,7 +44,7 @@ export default function Postjob() {
       {step === 6 && <Step6 setStep={setStep} />}
       {step === 7 && <Step7 setStep={setStep} />}
       {step !== 1 && (
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="fixed bottom-0 left-0 right-0 z-10">
           <Stepper onBack={handleBack} />
         </div>
       )}

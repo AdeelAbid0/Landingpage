@@ -37,7 +37,13 @@ export const siteConfig = {
  * Twitter tags so each route shows its own title/description when shared
  * on social platforms instead of falling back to the root layout's.
  */
-export function buildMetadata({ title, description, path, images }) {
+export function buildMetadata({
+  title,
+  description,
+  path,
+  images,
+  noIndex = false,
+}) {
   const ogImages = images || [siteConfig.ogImage];
 
   return {
@@ -62,5 +68,12 @@ export function buildMetadata({ title, description, path, images }) {
       description,
       images: ogImages,
     },
+    ...(noIndex && {
+      robots: {
+        index: false,
+        follow: true,
+        googleBot: { index: false, follow: true },
+      },
+    }),
   };
 }

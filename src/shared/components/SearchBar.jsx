@@ -48,7 +48,7 @@ export default function SearchBar({
         </button>
       </div>
       {isSuggestionsOpen && (
-        <div className="absolute top-full z-20 mt-6 w-full rounded-[20px] border border-primary/20 bg-white p-6 shadow-lg">
+        <div className="absolute top-full z-30 mt-6 w-full rounded-[20px] border border-primary/20 bg-white p-6 shadow-lg">
           <p className="mb-3 text-xs text-muted-foreground">
             Popular searches on ProDoo
           </p>

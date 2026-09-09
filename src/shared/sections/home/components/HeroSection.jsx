@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import LampIcon from "@/assets/icons/lamp-charge.svg";
 import CheckmarkIcon from "@/assets/icons/checkmark.svg";
@@ -27,7 +29,8 @@ const ROLE_CARDS = [
     gradient: "linear-gradient(108.88deg, #02C1A1 2.1%, #015B4C 98.19%)",
     borderColor: "#B1EFE4",
     badgeColor: "#017965",
-    corner: "rounded-tl-[20px] rounded-bl-[20px]",
+    corner:
+      "rounded-t-[20px] md:rounded-tr-none md:rounded-tl-[20px] md:rounded-bl-[20px]",
     label: "For Recruiters",
     steps: [
       "Post Jobs in Seconds with AI",
@@ -41,7 +44,8 @@ const ROLE_CARDS = [
     gradient: "linear-gradient(109deg, #7B70D4 1.62%, #403A6E 97.64%)",
     borderColor: "#DCD8FC",
     badgeColor: "#403A6E",
-    corner: "rounded-tr-[20px] rounded-br-[20px]",
+    corner:
+      "rounded-b-[20px] md:rounded-bl-none md:rounded-tr-[20px] md:rounded-br-[20px]",
     mirrored: true,
     label: "For Freelancers",
     steps: [
@@ -85,11 +89,11 @@ function RoleCard({
   return (
     <div className="relative w-full">
       <div
-        className={`absolute top-58 z-0 h-9.5 border ${mirrored ? "left-0 right-20.25" : "left-20.25 right-0"} ${corner}`}
+        className={`absolute z-0 h-9.5 border ${mirrored ? "top-58 left-29 right-0 md:top-58 md:left-0 md:right-20.25" : "-top-6 left-0 right-28 md:top-58 md:left-20.25 md:right-0"} ${corner}`}
         style={{ background: gradient, borderColor }}
       />
       <div
-        className={`absolute top-55 z-10 h-9.5 border ${mirrored ? "left-0 right-9.5" : "left-9.5 right-0"} ${corner}`}
+        className={`absolute z-10 h-9.5 border ${mirrored ? "top-55 left-17 right-0 md:top-55 md:left-0 md:right-9.5" : "-top-3 left-0 right-17.5 md:top-55 md:left-9.5 md:right-0"} ${corner}`}
         style={{ background: gradient, borderColor }}
       />
       <div
@@ -145,7 +149,7 @@ export default function HeroSection() {
           </span>
         </div>
       </div>
-      <div className="flex flex-col w-full max-w-214 mt-7 md:mt-8 items-center text-[33px] md:text-[64px] font-bold text-center leading-10.5 md:leading-16">
+      <div className="flex flex-col w-full md:max-w-214 mt-7 md:mt-8 md:items-center text-[33px] md:text-[64px] font-bold text-center leading-10.5 md:leading-16">
         <h1 className="flex flex-col items-start md:items-center gap-1 md:gap-5">
           <span className="flex items-center gap-2 md:gap-5">
             <span className="text-primary">Discover</span> the world’s
@@ -207,7 +211,7 @@ export default function HeroSection() {
               </div>
             </div> */}
             <span
-              className="flex h-11! w-full md:w-[300px] cursor-pointer items-center rounded-full bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] p-0.5"
+              className="flex h-11! w-full md:w-75 cursor-pointer items-center rounded-full bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] p-0.5"
               onClick={() => router.push("/browse-jobs")}
             >
               <span className="flex h-full w-full items-center justify-center gap-2 rounded-full bg-white px-5">
@@ -223,7 +227,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="flex flex-col md:text-center md:items-center justify-center w-full max-w-188 mt-10">
+        <div className="mt-10 flex w-full max-w-188 flex-col items-start justify-center text-left md:items-center md:text-center">
           <div className="flex gap-2 items-start md:items-center">
             <MaskIcon
               path={BARD_ICON_PATH}
@@ -236,7 +240,7 @@ export default function HeroSection() {
               How it works
             </h2>
           </div>
-          <div className="flex w-full max-w-208 gap-0 mt-4 md:mt-8 mb-12">
+          <div className="flex flex-col md:flex-row w-full max-w-208 gap-0 mt-8 mb-12">
             {ROLE_CARDS.map(({ key, ...card }) => (
               <RoleCard key={key} {...card} />
             ))}

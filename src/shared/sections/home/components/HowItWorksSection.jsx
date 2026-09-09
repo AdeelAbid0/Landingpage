@@ -15,6 +15,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useSystemLabel } from "@/api/hooks/useSystemLabel";
 
 const ProcessFlow = ({
   steps,
@@ -252,7 +253,8 @@ const ProcessFlow = ({
   </div>
 );
 
-const HowItWorksSection = ({ labels }) => {
+const HowItWorksSection = () => {
+  const { data: labels } = useSystemLabel();
   const { elementRef: headerRef, isVisible: headerVisible } =
     useScrollAnimation();
   const { elementRef: companyRef, isVisible: companyVisible } =

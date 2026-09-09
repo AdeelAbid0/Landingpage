@@ -19,30 +19,13 @@ export default function Navbar() {
         aria-label="Primary"
         className="flex w-full items-center justify-between gap-4 px-4 md:px-16 py-3 md:py-5 h-18 bg-white max-w-360"
       >
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            aria-label={
-              showMenu ? "Close navigation menu" : "Open navigation menu"
-            }
-            aria-expanded={showMenu}
-            onClick={() => setShowMenu(!showMenu)}
-            className={`md:hidden h-7 w-7 flex items-center justify-center rounded-full cursor-pointer ${showMenu ? "bg-danger" : "bg-primary"}`}
-          >
-            {showMenu ? (
-              <AddIcon className="h-3.5 w-3.5 text-white" />
-            ) : (
-              <MenuIcon className="h-auto w-3" />
-            )}
-          </button>
-          <Link href="/" aria-label="Prodoo home">
-            <Logo
-              className="h-6! w-20! md:h-11! md:w-34!"
-              role="img"
-              aria-label="Prodoo"
-            />
-          </Link>
-        </div>
+        <Link href="/" aria-label="Prodoo home">
+          <Logo
+            className="h-6! w-20! md:h-11! md:w-34!"
+            role="img"
+            aria-label="Prodoo"
+          />
+        </Link>
         <ul className="hidden md:flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-muted-foreground">
           {navLinks.map(({ href, label }) => {
             const isActive = pathname === href;
@@ -62,6 +45,21 @@ export default function Navbar() {
             );
           })}
         </ul>
+        <button
+          type="button"
+          aria-label={
+            showMenu ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={showMenu}
+          onClick={() => setShowMenu(!showMenu)}
+          className={`md:hidden h-7 w-7 flex items-center justify-center rounded-full cursor-pointer ${showMenu ? "bg-danger" : "bg-primary"}`}
+        >
+          {showMenu ? (
+            <AddIcon className="h-3.5 w-3.5 text-white" />
+          ) : (
+            <MenuIcon className="h-auto w-3" />
+          )}
+        </button>
         <div className="hidden md:flex items-center gap-2">
           <Button
             type="primary"
@@ -86,7 +84,7 @@ export default function Navbar() {
             onClick={() => setShowMenu(false)}
             className="fixed inset-0 top-15 z-10 bg-black/20 backdrop-blur-[2px] md:hidden"
           />
-          <div className="absolute left-1/2 top-[calc(100%+10px)] z-20 flex w-[calc(100%-20px)] max-w-85.75 -translate-x-1/2 flex-col rounded-[20px] bg-white p-3 shadow-[0_16px_35px_rgba(79,69,150,0.2)] md:hidden">
+          <div className="absolute left-1/2 top-[calc(100%+10px)] z-30 flex w-[calc(100%-20px)] max-w-85.75 -translate-x-1/2 flex-col rounded-[20px] bg-white p-3 shadow-[0_16px_35px_rgba(79,69,150,0.2)] md:hidden">
             <ul className="flex flex-col text-md gap-2 font-medium text-foreground">
               {navLinks.map(({ href, label }) => {
                 const isActive = pathname === href;
