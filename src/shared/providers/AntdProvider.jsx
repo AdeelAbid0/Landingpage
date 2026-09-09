@@ -32,8 +32,8 @@ export default function AntdProvider({ children }) {
             Button: {
               controlHeight: 44,
               controlHeightSM: 40,
-              borderRadius: 99,
-              borderRadiusSM: 99,
+              borderRadius: 8,
+              borderRadiusSM: 8,
               colorPrimaryText: "white",
               paddingInline: 16,
               paddingInlineSM: 16,
@@ -51,6 +51,12 @@ export default function AntdProvider({ children }) {
               colorLinkActive: "#8E81F5",
               colorBgContainerDisabled: "#D7D7D7",
               colorTextDisabled: "#737373",
+            },
+            Checkbox: {
+              controlInteractiveSize: 17,
+              borderRadiusSM: 5,
+              colorPrimary: "#8E81F5",
+              colorPrimaryHover: "#8E81F5",
             },
             Select: {
               paddingBlock: 5,
