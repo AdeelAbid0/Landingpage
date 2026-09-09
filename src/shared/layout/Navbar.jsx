@@ -1,13 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/data/nav-links";
 import Logo from "@/assets/icons/logo.svg";
 import Button from "@/shared/ui/Button";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const HIDDEN_NAVBAR_ROUTES = ["/login", "/signup"];
+
+  if (HIDDEN_NAVBAR_ROUTES.includes(pathname)) {
+    return null;
+  }
 
   return (
     <header className="flex w-full justify-center shrink-0 border-b border-[#EAE5FC]">
@@ -16,7 +22,7 @@ export default function Navbar() {
         className="flex w-full items-center justify-between gap-4 px-16 py-5 h-18 bg-white max-w-360"
       >
         <Link href="/" aria-label="Prodoo home">
-          <Logo className="h-6! w-20!" role="img" aria-label="Prodoo" />
+          <Logo className="h-11! w-24!" role="img" aria-label="Prodoo" />
         </Link>
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-muted-foreground">
           {navLinks.map(({ href, label }) => {
@@ -43,6 +49,7 @@ export default function Navbar() {
             size="small"
             className="w-27.5! rounded-xl!"
             label={"Get Started"}
+            onClick={() => router.push("/signup")}
           />
 
           <Button
@@ -50,6 +57,7 @@ export default function Navbar() {
             size="small"
             className="w-27.5! rounded-xl!"
             label={"Login"}
+            onClick={() => router.push("/login")}
           />
         </div>
       </nav>
