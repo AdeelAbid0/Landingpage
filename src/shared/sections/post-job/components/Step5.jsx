@@ -78,7 +78,7 @@ export default function Step5({ setStep }) {
             }
           />
         </div>
-        <div className="flex w-full justify-center">
+        <div className="flex w-full justify-center mb-20">
           <Button
             type={"primary"}
             label="Continue"

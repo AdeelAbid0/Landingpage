@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Step1() {
   return (
     <section className="flex flex-col w-full h-[calc(100vh-73px)] items-center justify-center">

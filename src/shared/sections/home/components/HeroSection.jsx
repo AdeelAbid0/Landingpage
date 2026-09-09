@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import LampIcon from "@/assets/icons/lamp-charge.svg";
 import CheckmarkIcon from "@/assets/icons/checkmark.svg";

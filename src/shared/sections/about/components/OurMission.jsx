@@ -58,7 +58,6 @@ export default function OurMission() {
             alt=""
             height={616}
             width={1440}
-            priority
             className="min-w-full max-h-154 object-cover"
           />
         </div>
