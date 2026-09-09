@@ -24,7 +24,7 @@ const InputText = forwardRef(
     return (
       <div className="flex w-full items-center flex-col gap-2">
         {label && (
-          <p className="flex w-full justify-start text-foreground font-semibold text-[14px] md:text-[16px] leading-6">
+          <p className="flex w-full justify-start text-foreground font-medium text-[14px] md:text-[16px] leading-6">
             {label}
           </p>
         )}
@@ -38,11 +38,11 @@ const InputText = forwardRef(
           placeholder={placeholder}
           prefix={PrefixIcon ? PrefixIcon : null}
           suffix={SuffixIcon ? SuffixIcon : null}
-          className={`w-full! rounded-lg border bg-[#F4F2FE]! ${className ?? ""}`}
+          className={`w-full! rounded-lg border bg-white! ${className ?? ""}`}
           style={{ height: "44px" }}
           status={hasError ? "error" : ""}
           {...rest}
-          rootClassName="[&_.ant-input]:leading-0! [&_.ant-input-prefix]:!mr-2"
+          rootClassName="[&_.ant-input]:leading-0! [&_.ant-input-prefix]:!mr-2 [&_.ant-input]:placeholder:text-muted-foreground!"
         />
         {hasError && (
           <div className="flex w-full justify-start">
