@@ -211,11 +211,11 @@ export default function HeroSection() {
               </div>
             </div> */}
             <span
-              className="flex h-11! w-full md:w-75 cursor-pointer items-center rounded-full bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] p-0.5"
+              className="flex h-11! w-full md:w-76 cursor-pointer items-center rounded-full bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] p-0.5"
               onClick={() => router.push("/browse-jobs")}
             >
               <span className="flex h-full w-full items-center justify-center gap-2 rounded-full bg-white px-5">
-                <span className="bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] bg-clip-text text-transparent">
+                <span className="bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] bg-clip-text text-transparent w-max">
                   Browse Jobs, I’m a Freelancer
                 </span>
                 <MaskIcon

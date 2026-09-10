@@ -38,7 +38,7 @@ const InputText = forwardRef(
           placeholder={placeholder}
           prefix={PrefixIcon ? PrefixIcon : null}
           suffix={SuffixIcon ? SuffixIcon : null}
-          className={`w-full! rounded-lg border bg-white! ${className ?? ""}`}
+          className={`w-full! rounded-full! md:h-12! border bg-white ${className ?? ""}`}
           style={{ height: "44px" }}
           status={hasError ? "error" : ""}
           {...rest}

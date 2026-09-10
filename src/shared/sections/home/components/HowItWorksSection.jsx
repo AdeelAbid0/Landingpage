@@ -367,7 +367,7 @@ const HowItWorksSection = () => {
   return (
     <section
       id="whyprodoo"
-      className="border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15"
+      className="hidden md:block border-t border-[#EAE5FC] relative overflow-hidden lg:pb-15"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-gradient-radial from-company/15 via-company/5 to-transparent rounded-full blur-3xl animate-pulse"></div>

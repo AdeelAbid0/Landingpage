@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/data/nav-links";
 import Logo from "@/assets/icons/logo.svg";
 import Button from "@/shared/ui/Button";
@@ -12,6 +12,12 @@ import { useState } from "react";
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const HIDDEN_NAVBAR_ROUTES = ["/login", "/signup"];
+
+  if (HIDDEN_NAVBAR_ROUTES.includes(pathname)) {
+    return null;
+  }
 
   return (
     <header className="relative flex w-full justify-center shrink-0 border-b border-[#EAE5FC]">
@@ -66,6 +72,7 @@ export default function Navbar() {
             size="small"
             className="w-27.5! rounded-xl!"
             label={"Get Started"}
+            onClick={() => router.push("/signup")}
           />
 
           <Button
@@ -73,6 +80,7 @@ export default function Navbar() {
             size="small"
             className="w-27.5! rounded-xl!"
             label={"Login"}
+            onClick={() => router.push("/login")}
           />
         </div>
       </nav>

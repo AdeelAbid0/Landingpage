@@ -122,7 +122,7 @@ function FeatureGroup({ group }) {
   return (
     <>
       <div
-        className={`flex flex-col text-center justify-center items-center w-full max-w-149 mt-16 gap-2 p-6 border ${group.introBorder} rounded-xl`}
+        className={`flex flex-col text-center justify-center items-center w-full max-w-149 mt-8 md:mt-16 gap-2 p-6 border ${group.introBorder} rounded-xl`}
       >
         <h2 className={`text-[20px] font-semibold ${group.accentColor}`}>
           {group.heading}
@@ -134,7 +134,7 @@ function FeatureGroup({ group }) {
 
       <div className="flex w-full justify-between max-w-300 gap-6">
         <div className="w-full">
-          <div className="grid grid-cols-3 gap-6 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 md:mt-16">
             {visibleFeatures.map((feature) => (
               <FeatureCard
                 key={feature.title}
@@ -154,7 +154,7 @@ function FeatureGroup({ group }) {
             >
               <div className="overflow-hidden">
                 <div
-                  className={`grid grid-cols-3 gap-6 pt-6 transition-opacity duration-500 ${
+                  className={`grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 transition-opacity duration-500 ${
                     expanded ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -198,15 +198,15 @@ export default function UserJourneySection() {
   return (
     <section
       ref={elementRef}
-      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 animate-on-scroll ${
+      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-8 md:py-16 px-5 md:px-0 animate-on-scroll ${
         isVisible ? "animate-visible" : ""
       }`}
     >
-      <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-188">
-        <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
-          <h2>Your Path to Smarter Hiring and Freelancing</h2>
+      <div className="flex flex-col gap-4 md:text-center md:items-center items-start justify-center w-full max-w-188">
+        <div className="flex items-center gap-4 text-foreground text-2xl md:text-[40px] font-semibold leading-9 md:leading-13">
+          <h2>Smarter Hiring and Freelancing</h2>
         </div>
-        <p className="font-normal text-muted-foreground text-[16px] leading-6">
+        <p className="font-normal text-muted-foreground text-xs md:text-[16px] leading-4.5 md:leading-6">
           Prodoo connects businesses and professionals via a secure platform to
           find and hire verified freelancers. Explore global freelance jobs,
           virtual roles, and flexible work-from-home opportunities.
