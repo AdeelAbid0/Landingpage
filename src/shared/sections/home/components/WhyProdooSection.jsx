@@ -93,7 +93,7 @@ function HiringPointsList({ points, borderClass, iconClassName, expanded }) {
   const extraPoints = points.slice(VISIBLE_POINTS_COUNT);
 
   return (
-    <div className="flex flex-col gap-3 mt-7">
+    <div className="flex flex-col gap-3 mt-3 md:mt-7">
       {visiblePoints.map((point) => (
         <HiringPoint
           key={point.label}
@@ -111,7 +111,7 @@ function HiringPointsList({ points, borderClass, iconClassName, expanded }) {
         >
           <div className="overflow-hidden">
             <div
-              className={`flex flex-col gap-3 pt-3 transition-opacity duration-500 ${
+              className={`flex flex-col gap-3 md:pt-3 transition-opacity duration-500 ${
                 expanded ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -138,25 +138,25 @@ export default function WhyProdooSection() {
   return (
     <section
       ref={elementRef}
-      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16 animate-on-scroll ${
+      className={`relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-8 md:py-16 px-5 md:px-0 animate-on-scroll ${
         isVisible ? "animate-visible" : ""
       }`}
     >
       <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-188">
-        <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
+        <div className="flex items-center gap-4 text-foreground text-2xl md:text-[40px] font-semibold leading-9 md:leading-13">
           <h2>Why Choose Prodoo?</h2>
         </div>
-        <p className="font-normal text-muted-foreground text-[16px] leading-6">
+        <p className="font-normal text-muted-foreground text-xs md:text-[16px] leading-4.5 md:leading-6">
           Powerful AI driven tools built to simplify remote hiring, streamline
           project management, and boost productivity for businesses and
           freelancers alike.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-6  mt-16 max-w-249 pb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 md:mt-16 max-w-249 pb-8 md:pb-16">
         {whyProdooFeatures.map((feature, index) => (
           <div
             key={feature.title}
-            className={`flex flex-col gap-3 ${index >= 2 ? "mt-10" : ""}`}
+            className={`flex flex-col gap-3 ${index >= 2 ? "mt-0 md:mt-10" : ""}`}
           >
             <div className="flex gap-3 items-center">
               <span className="w-12 h-12 flex justify-center items-center bg-[#EAE5FC] rounded-lg">
@@ -174,22 +174,22 @@ export default function WhyProdooSection() {
           </div>
         ))}
       </div>
-      <section className="relative flex flex-col w-full items-center overflow-hidden border-t border-[#EAE5FC] py-16">
-        <div className="flex flex-col gap-4 text-center items-center justify-center w-full max-w-188">
-          <div className="flex items-center gap-4 text-foreground text-[40px] font-semibold leading-13">
+      <section className="relative flex flex-col w-full items-start md:items-center overflow-hidden border-t border-[#EAE5FC] py-8 md:py-16">
+        <div className="flex flex-col gap-4 md:text-center items-start md:items-center justify-center w-full max-w-188">
+          <div className="flex items-center gap-4 text-foreground text-2xl md:text-[40px] font-semibold leading-9 md:leading-13">
             <h3>Why Prodoo is Different</h3>
           </div>
-          <p className="font-normal text-muted-foreground text-[16px] leading-6">
+          <p className="font-normal text-muted-foreground text-xs md:text-[16px] leading-4.5 md:leading-6">
             Prodoo connects businesses with skilled freelancers, simplifying
             hiring and collaboration. It&apos;s a reliable platform for growth.
           </p>
         </div>
 
-        <div className="flex gap-25 w-full max-w-300 mt-16">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-25 w-full max-w-300 mt-8 md:mt-16">
           <div className="flex w-full flex-col max-w-137.5">
             <span className="flex gap-3 items-center">
               <BardIcon className="text-foreground text-2xl font-semibold" />
-              <h3 className="text-foreground text-2xl font-semibold">
+              <h3 className="text-foreground text-xl md:text-2xl font-semibold">
                 Traditional Hiring
               </h3>
             </span>
@@ -202,7 +202,7 @@ export default function WhyProdooSection() {
           <div className="flex w-full flex-col max-w-137.5">
             <span className="flex gap-3 items-center">
               <BardIcon className="text-primary text-2xl font-semibold" />
-              <h3 className="text-primary text-2xl font-semibold">
+              <h3 className="text-primary text-xl md:text-2xl font-semibold">
                 ProDoo Hiring
               </h3>
             </span>

@@ -29,7 +29,8 @@ const ROLE_CARDS = [
     gradient: "linear-gradient(108.88deg, #02C1A1 2.1%, #015B4C 98.19%)",
     borderColor: "#B1EFE4",
     badgeColor: "#017965",
-    corner: "rounded-tl-[20px] rounded-bl-[20px]",
+    corner:
+      "rounded-t-[20px] md:rounded-tr-none md:rounded-tl-[20px] md:rounded-bl-[20px]",
     label: "For Recruiters",
     steps: [
       "Post Jobs in Seconds with AI",
@@ -43,7 +44,8 @@ const ROLE_CARDS = [
     gradient: "linear-gradient(109deg, #7B70D4 1.62%, #403A6E 97.64%)",
     borderColor: "#DCD8FC",
     badgeColor: "#403A6E",
-    corner: "rounded-tr-[20px] rounded-br-[20px]",
+    corner:
+      "rounded-b-[20px] md:rounded-bl-none md:rounded-tr-[20px] md:rounded-br-[20px]",
     mirrored: true,
     label: "For Freelancers",
     steps: [
@@ -87,11 +89,11 @@ function RoleCard({
   return (
     <div className="relative w-full">
       <div
-        className={`absolute top-58 z-0 h-9.5 border ${mirrored ? "left-0 right-20.25" : "left-20.25 right-0"} ${corner}`}
+        className={`absolute z-0 h-9.5 border ${mirrored ? "top-58 left-29 right-0 md:top-58 md:left-0 md:right-20.25" : "-top-6 left-0 right-28 md:top-58 md:left-20.25 md:right-0"} ${corner}`}
         style={{ background: gradient, borderColor }}
       />
       <div
-        className={`absolute top-55 z-10 h-9.5 border ${mirrored ? "left-0 right-9.5" : "left-9.5 right-0"} ${corner}`}
+        className={`absolute z-10 h-9.5 border ${mirrored ? "top-55 left-17 right-0 md:top-55 md:left-0 md:right-9.5" : "-top-3 left-0 right-17.5 md:top-55 md:left-9.5 md:right-0"} ${corner}`}
         style={{ background: gradient, borderColor }}
       />
       <div
@@ -123,7 +125,7 @@ export default function HeroSection() {
     router.push("/post-job");
   };
   return (
-    <section className="relative flex flex-col w-full items-center overflow-hidden">
+    <section className="relative flex flex-col w-full items-center overflow-hidden px-5 md:px-0">
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/overlay.webp"
@@ -135,35 +137,46 @@ export default function HeroSection() {
         />
       </div>
       <div className="relative flex w-full h-full justify-center items-center">
-        <div className="h-10 flex w-full justify-center items-center bg-[#FFFFFF40] border-b border-[#FFFFFF] gap-1 font-medium text-sm text-foreground">
-          <LampIcon />
+        <div className="h-10 flex w-full justify-center items-center bg-[#FFFFFF40] border-b border-[#FFFFFF] gap-1 font-medium text-[10px] md:text-sm text-foreground">
+          <LampIcon className="hidden md:flex" />
           <span className="flex flex-wrap items-center gap-1">
-            <span className="text-primary font-bold">Big News:</span>
+            <span className="hidden md:flex text-primary font-bold">
+              Big News:
+            </span>
             <span>ProDoo charges zero commission, </span>
             <span className="text-primary font-bold">you keep 100%</span>
             <span>of what you earn.</span>
           </span>
         </div>
       </div>
-      <div className="flex flex-col w-full max-w-214 mt-8 items-center text-[64px] font-bold text-center leading-16">
-        <h1 className="flex flex-col items-center gap-5">
-          <span className="flex items-center gap-5">
+      <div className="flex flex-col w-full md:max-w-214 mt-7 md:mt-8 md:items-center text-[33px] md:text-[64px] font-bold text-center leading-10.5 md:leading-16">
+        <h1 className="flex flex-col items-start md:items-center gap-1 md:gap-5">
+          <span className="flex items-center gap-2 md:gap-5">
             <span className="text-primary">Discover</span> the world’s
           </span>
-          <span className="flex w-full items-center gap-5">
+          <span className="flex w-full items-center gap-2 md:gap-5">
             Top rated
             <Image
               src="/images/customer-images.webp"
               alt="ProDoo customer avatars"
+              className="hidden md:flex"
               width={180}
               height={86}
               priority
             />
             <span className="text-primary">talent here</span>
           </span>
+          <Image
+            src="/images/customer-images.webp"
+            alt="ProDoo customer avatars"
+            className="md:hidden flex"
+            width={180}
+            height={86}
+            priority
+          />
         </h1>
       </div>
-      <div className="text-[16px] max-w-172 text-center text-foreground mt-3 mb-6">
+      <div className="text-xs md:text-[16px] max-w-172 leading-4.5 md:leading-100% md:text-center text-foreground mt-4 md:mt-3 md:mb-6">
         <p>
           Discover ProDoo to hire trusted freelancers, explore freelance jobs,
           connect with remote talent, and grow through a global freelancing
@@ -180,10 +193,13 @@ export default function HeroSection() {
             className="min-w-full object-cover"
           />
         </div>
-        <div className="flex flex-col w-full max-w-209 justify-center gap-6 mt-8 mb-6">
-          <SearchBar onSearch={handleSearch} />
-          <div className="flex w-full justify-between">
-            <div className="flex items-center gap-3">
+        <div className="relative flex flex-col w-full max-w-209 justify-center gap-6 mt-8 mb-6">
+          <SearchBar
+            onSearch={handleSearch}
+            className="w-full h-61.5! md:h-auto! rounded-2xl! md:rounded-full!"
+          />
+          <div className="flex w-full justify-end">
+            {/* <div className="flex items-center gap-3">
               <div className="text-foreground text-xs! font-medium! border border-[#DCD8FC] px-2.5 py-2 rounded-full">
                 <p>User experience designer</p>
               </div>
@@ -193,22 +209,26 @@ export default function HeroSection() {
               <div className="text-foreground text-xs! font-medium! border border-[#DCD8FC] px-2.5 py-2 rounded-full">
                 <p>Full stack devloper</p>
               </div>
-            </div>
+            </div> */}
             <span
-              className="flex items-center gap-2 cursor-pointer bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_24.74%)] bg-clip-text text-transparent"
+              className="flex h-11! w-full md:w-76 cursor-pointer items-center rounded-full bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] p-0.5"
               onClick={() => router.push("/browse-jobs")}
             >
-              Browser Jobs, I’m a Freelancer
-              <MaskIcon
-                path={ARROW_ICON_PATH}
-                className="h-5 w-5 rotate-90 bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_24.74%)]"
-              />
+              <span className="flex h-full w-full items-center justify-center gap-2 rounded-full bg-white px-5">
+                <span className="bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] bg-clip-text text-transparent w-max">
+                  Browse Jobs, I’m a Freelancer
+                </span>
+                <MaskIcon
+                  path={ARROW_ICON_PATH}
+                  className="h-5 w-5 rotate-90 bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)]"
+                />
+              </span>
             </span>
           </div>
         </div>
 
-        <div className="flex flex-col text-center items-center justify-center w-full max-w-188 mt-10">
-          <div className="flex gap-2 items-center">
+        <div className="mt-10 flex w-full max-w-188 flex-col items-start justify-center text-left md:items-center md:text-center">
+          <div className="flex gap-2 items-start md:items-center">
             <MaskIcon
               path={BARD_ICON_PATH}
               className="h-6 w-6"
@@ -220,7 +240,7 @@ export default function HeroSection() {
               How it works
             </h2>
           </div>
-          <div className="flex w-full max-w-208 gap-0 mt-8 mb-12">
+          <div className="flex flex-col md:flex-row w-full max-w-208 gap-0 mt-8 mb-12">
             {ROLE_CARDS.map(({ key, ...card }) => (
               <RoleCard key={key} {...card} />
             ))}
