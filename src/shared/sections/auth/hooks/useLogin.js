@@ -11,7 +11,9 @@ import { API_URL } from "@/api/apiUrl";
  *
  * On success the token/user are persisted the way axiosInstance's request
  * interceptor already expects (`localStorage.token`), so subsequent calls
- * pick it up automatically.
+ * pick it up automatically. The token is also returned on the result
+ * (`data.token`) so callers can hand it to prodoo-reactjs's
+ * /redirected-login handoff - see redirectToLegacyApp.
  *
  * TODO: once a real "remember me" story exists, honor `isRemembered` by
  * choosing between localStorage/sessionStorage - axiosInstance currently
@@ -30,6 +32,7 @@ export const useLogin = () =>
         const token = response.headers?.[".aspxauth"];
         if (token) localStorage.setItem("token", token);
         if (data.items) localStorage.setItem("user", JSON.stringify(data.items));
+        return { ...data, token };
       }
 
       return data;

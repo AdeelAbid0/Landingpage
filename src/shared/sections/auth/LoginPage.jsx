@@ -17,6 +17,7 @@ import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 import AuthLayout from "./components/AuthLayout";
 import { useLogin } from "./hooks/useLogin";
 import { useGoogleAuth } from "./hooks/useGoogleAuth";
+import { redirectToLegacyApp } from "./utils/redirectToLegacyApp";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -51,10 +52,7 @@ export default function LoginPage() {
       {
         onSuccess: (data) => {
           if (data?.success) {
-            // TODO: point at the real dashboard route once it exists in
-            // this app - the legacy prodoo-reactjs app hard-redirects to
-            // a hash-routed /#/dashboard behind the same domain.
-            router.push("/");
+            redirectToLegacyApp(data.token);
           } else {
             message.error(data?.message || "Invalid email or password.");
           }
@@ -79,7 +77,7 @@ export default function LoginPage() {
       {
         onSuccess: (data) => {
           if (data?.success) {
-            router.push("/");
+            redirectToLegacyApp(data.token);
           } else if (data?.message?.includes("incorrect")) {
             sessionStorage.setItem("googleCredentials", JSON.stringify(profile));
             router.push("/signup");

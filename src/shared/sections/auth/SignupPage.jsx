@@ -27,6 +27,7 @@ import { useSignUp } from "./hooks/useSignUp";
 import { useResendEmailConfirmation } from "./hooks/useResendEmailConfirmation";
 import { useLogin } from "./hooks/useLogin";
 import { useGoogleAuth } from "./hooks/useGoogleAuth";
+import { redirectToLegacyApp } from "./utils/redirectToLegacyApp";
 
 const SELECT_ROUNDED_CLASS =
   "rounded-full! border! bg-[#F4F2FE]! h-11! md:h-12! [&_.ant-select-content]:text-left!";
@@ -182,7 +183,7 @@ export default function SignupPage() {
       {
         onSuccess: (result) => {
           if (result?.success) {
-            router.push("/");
+            redirectToLegacyApp(result.token);
           } else if (result?.message?.includes("incorrect")) {
             setFormData((prev) => ({
               ...prev,
