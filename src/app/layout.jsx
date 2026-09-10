@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { siteConfig } from "@/lib/seo/site-config";
 import Navbar from "@/shared/layout/Navbar";
 import AntdProvider from "@/shared/providers/AntdProvider";
+import GoogleAuthProvider from "@/shared/providers/GoogleAuthProvider";
 import QueryProvider from "@/shared/providers/QueryProvider";
 import "./globals.css";
 import Footer from "@/shared/layout/Footer";
@@ -80,15 +81,17 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <QueryProvider>
-          <AntdProvider>
-            <Navbar />
-            <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
-              <div className="flex-1 flex flex-col">{children}</div>
-              <Footer />
-            </div>
-          </AntdProvider>
-        </QueryProvider>
+        <GoogleAuthProvider>
+          <QueryProvider>
+            <AntdProvider>
+              <Navbar />
+              <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
+                <div className="flex-1 flex flex-col">{children}</div>
+                <Footer />
+              </div>
+            </AntdProvider>
+          </QueryProvider>
+        </GoogleAuthProvider>
       </body>
     </html>
   );

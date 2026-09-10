@@ -13,7 +13,7 @@ export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const HIDDEN_NAVBAR_ROUTES = ["/login", "/signup"];
+  const HIDDEN_NAVBAR_ROUTES = ["/login", "/signup", "/forgot-password"];
 
   if (HIDDEN_NAVBAR_ROUTES.includes(pathname)) {
     return null;
