@@ -89,11 +89,11 @@ function RoleCard({
   return (
     <div className="relative w-full">
       <div
-        className={`absolute z-0 h-9.5 border ${mirrored ? "top-58 left-29 right-0 md:top-58 md:left-0 md:right-20.25" : "-top-6 left-0 right-28 md:top-58 md:left-20.25 md:right-0"} ${corner}`}
+        className={`absolute z-0 h-9.5 border ${mirrored ? "top-58 left-29 right-0 md:left-0 md:right-20.25" : "-top-6 left-0 right-28 md:top-58 md:left-20.25 md:right-0"} ${corner}`}
         style={{ background: gradient, borderColor }}
       />
       <div
-        className={`absolute z-10 h-9.5 border ${mirrored ? "top-55 left-17 right-0 md:top-55 md:left-0 md:right-9.5" : "-top-3 left-0 right-17.5 md:top-55 md:left-9.5 md:right-0"} ${corner}`}
+        className={`absolute z-10 h-9.5 border ${mirrored ? "top-55 left-17 right-0 md:left-0 md:right-9.5" : "-top-3 left-0 right-17.5 md:top-55 md:left-9.5 md:right-0"} ${corner}`}
         style={{ background: gradient, borderColor }}
       />
       <div
@@ -199,17 +199,6 @@ export default function HeroSection() {
             className="w-full h-61.5! md:h-auto! rounded-2xl! md:rounded-full!"
           />
           <div className="flex w-full justify-end">
-            {/* <div className="flex items-center gap-3">
-              <div className="text-foreground text-xs! font-medium! border border-[#DCD8FC] px-2.5 py-2 rounded-full">
-                <p>User experience designer</p>
-              </div>
-              <div className="text-foreground text-xs! font-medium! border border-[#DCD8FC] px-2.5 py-2 rounded-full">
-                <p>React Developer</p>
-              </div>
-              <div className="text-foreground text-xs! font-medium! border border-[#DCD8FC] px-2.5 py-2 rounded-full">
-                <p>Full stack devloper</p>
-              </div>
-            </div> */}
             <span
               className="flex h-11! w-full md:w-76 cursor-pointer items-center rounded-full bg-[linear-gradient(90deg,#D22CFF_0%,#5659FE_100%)] p-0.5"
               onClick={() => router.push("/browse-jobs")}

@@ -42,6 +42,7 @@ export default function SearchBar({
         <button
           type="button"
           onClick={onSearch}
+          aria-label="Search"
           className="absolute bottom-3 right-3 flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full border border-white bg-[linear-gradient(270deg,#3864FD_0%,#D22CFF_50%)] text-[14px]! font-normal! text-white shadow-[0px_4px_4px_0px_#FFFFFF40_inset,0px_-4px_4px_0px_#FFFFFF40_inset,4px_0px_4px_0px_#FFFFFF40_inset,-4px_4px_4px_0px_#FFFFFF40_inset] md:bottom-auto md:right-auto h-10 w-11 md:static"
         >
           <ArrowRight className="h-6 w-6 rotate-90" />

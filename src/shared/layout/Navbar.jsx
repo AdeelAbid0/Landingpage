@@ -15,6 +15,12 @@ export default function Navbar() {
   const router = useRouter();
   const HIDDEN_NAVBAR_ROUTES = ["/login", "/signup", "/forgot-password"];
 
+  const [renderedPathname, setRenderedPathname] = useState(pathname);
+  if (pathname !== renderedPathname) {
+    setRenderedPathname(pathname);
+    setShowMenu(false);
+  }
+
   if (HIDDEN_NAVBAR_ROUTES.includes(pathname)) {
     return null;
   }
@@ -121,12 +127,14 @@ export default function Navbar() {
                 size="small"
                 className="w-full! h-10! rounded-xl!"
                 label="Get Started"
+                onClick={() => router.push("/signup")}
               />
               <Button
                 type="outline"
                 size="small"
                 className="w-full! h-10! rounded-xl!"
                 label="Log In"
+                onClick={() => router.push("/login")}
               />
             </div>
           </div>
