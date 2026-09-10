@@ -87,7 +87,13 @@ function FooterColumn({ title, Icon, links }) {
   );
 }
 
-const HIDDEN_FOOTER_ROUTES = ["/browse-jobs", "/post-job", "/login", "/signup"];
+const HIDDEN_FOOTER_ROUTES = [
+  "/browse-jobs",
+  "/post-job",
+  "/login",
+  "/signup",
+  "/forgot-password",
+];
 
 export default function Footer() {
   const pathname = usePathname();

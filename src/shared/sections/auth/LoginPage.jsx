@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Divider } from "antd";
 import { isValidEmail } from "@/lib/validators";
 import Button from "@/shared/ui/Button";
@@ -17,8 +16,6 @@ import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 import AuthLayout from "./components/AuthLayout";
 
 export default function LoginPage() {
-  const router = useRouter();
-
   const [form, setForm] = useState({ email: "", password: "" });
   const [invalid, setInvalid] = useState({ email: false, password: false });
   const [isRemembered, setIsRemembered] = useState(true);
@@ -51,7 +48,7 @@ export default function LoginPage() {
   };
 
   return (
-    <AuthLayout onBack={() => router.push("/")}>
+    <AuthLayout>
       <h1 className="m-0! text-[20px]! font-bold! text-foreground lg:text-[28px]!">
         Welcome back
       </h1>
@@ -117,13 +114,12 @@ export default function LoginPage() {
             onChange={() => setIsRemembered((prev) => !prev)}
             label="Remember me"
           />
-          {/* TODO: point at a real /forgot-password page once it exists. */}
-          <button
-            type="button"
+          <Link
+            href="/forgot-password"
             className="m-0! text-[13px] font-normal text-primary lg:text-[16px]"
           >
             Forgot Password?
-          </button>
+          </Link>
         </div>
 
         <Button
@@ -147,7 +143,7 @@ export default function LoginPage() {
           type="button"
           className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#F4F2FE] lg:h-12"
         >
-          <GoogleIcon />
+          <GoogleIcon className="h-5! w-5! shrink-0" />
           <span className="text-sm! font-medium text-foreground ">
             Continue with Google
           </span>

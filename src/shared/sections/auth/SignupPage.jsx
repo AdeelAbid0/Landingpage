@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Divider, Input, Radio } from "antd";
+import { Divider, Radio } from "antd";
 import { isValidEmail, isValidPassword } from "@/lib/validators";
 import Button from "@/shared/ui/Button";
 import InputText from "@/shared/ui/InputText";
@@ -11,7 +11,26 @@ import Select from "@/shared/ui/Select";
 import Checkbox from "@/shared/ui/Checkbox";
 import GoogleIcon from "@/assets/icons/google-icon.svg";
 import SmsIcon from "@/assets/icons/sms-signup.svg";
+import EmailIcon from "@/assets/icons/sms.svg";
+import ProfileIcon from "@/assets/icons/profile-filled.svg";
+import LockIcon from "@/assets/icons/lock.svg";
+import EyeIcon from "@/assets/icons/eye.svg";
+import EyeSlashIcon from "@/assets/icons/eye-slash.svg";
+import FlagIcon from "@/assets/icons/flag.svg";
+import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 import AuthLayout from "./components/AuthLayout";
+
+const SELECT_ROUNDED_CLASS =
+  "rounded-full! border! bg-[#F4F2FE]! h-11! md:h-12! [&_.ant-select-content]:text-left!";
+
+// TODO: replace with real country data once GET /Country is ported.
+const DUMMY_COUNTRY_OPTIONS = [
+  { value: "pk", label: "Pakistan" },
+  { value: "us", label: "United States" },
+  { value: "gb", label: "United Kingdom" },
+  { value: "ae", label: "United Arab Emirates" },
+  { value: "ca", label: "Canada" },
+];
 
 const TOTAL_STEPS = 3;
 
@@ -34,11 +53,13 @@ export default function SignupPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState(initialFormData);
   const [isDone, setIsDone] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // TODO: replace with the real GET /Country, /Role and /Skill lookups
-  // (see getAllCountriesApi / RolesLookup / SkillsLookup in landingPageApi.js)
-  // once those endpoints are ported to src/api/apiUrl.js.
-  const countryOptions = [];
+  // TODO: replace with the real GET /Role and /Skill lookups
+  // (see RolesLookup / SkillsLookup in landingPageApi.js) once those
+  // endpoints are ported to src/api/apiUrl.js.
+  const countryOptions = DUMMY_COUNTRY_OPTIONS;
   const jobRoleOptions = [];
   const skillOptions = [];
 
@@ -96,7 +117,7 @@ export default function SignupPage() {
 
   if (isDone) {
     return (
-      <AuthLayout showBackArrow={false}>
+      <AuthLayout>
         <div className="flex w-full flex-col items-center px-8">
           <SmsIcon />
           <h1 className="m-0! text-[20px]! font-semibold! text-foreground lg:text-2xl!">
@@ -108,12 +129,15 @@ export default function SignupPage() {
           </label>
           <Button
             type="primary"
-            label="Confirm your email address."
+            label="Confirm your email"
             onClick={openMailClient}
             className="mt-6 lg:h-12!"
           />
           {/* TODO: wire to getEmailConfirmationTokenApi once ported. */}
-          <button type="button" className="mt-5! text-[16px] font-semibold text-primary">
+          <button
+            type="button"
+            className="mt-5! text-[16px] font-semibold text-primary"
+          >
             Resend Email
           </button>
         </div>
@@ -122,37 +146,18 @@ export default function SignupPage() {
   }
 
   return (
-    <AuthLayout onBack={handlePrevStep}>
+    <AuthLayout currentStep={currentStep} totalSteps={TOTAL_STEPS}>
       <div className="mt-16 lg:mt-0">
-        <h1 className="m-0! text-[20px]! font-semibold! text-foreground lg:text-2xl!">
+        <h1 className="m-0! text-[20px]! font-bold! text-foreground lg:text-2xl!">
           {currentStep === 1
             ? "Get Your Free Account."
-            : "Complete your free account setup."}
+            : "Complete your free Account Setup"}
         </h1>
-        <p className="mt-3! text-[13px]! font-normal! text-muted-foreground lg:text-[16px]!">
+        <p className="mt-3! text-[13px]! font-normal! text-muted-foreground! lg:text-[16px]!">
           {currentStep === 1
-            ? "Please enter your details or Sign-up with social account(s)."
+            ? "Please enter your details or Sign up with google"
             : formData.email}
         </p>
-      </div>
-
-      <div className="mt-6 flex justify-center gap-5 lg:mt-11">
-        {[1, 2, 3].map((step) => (
-          <div
-            key={step}
-            className={`flex h-8 w-full max-w-35 items-start justify-center border-b-[3px] transition-colors duration-300 ease-in-out lg:h-11 ${
-              currentStep >= step ? "border-primary" : "border-[#C6C6C6]"
-            }`}
-          >
-            <span
-              className={`text-sm font-medium transition-colors duration-300 ease-in-out lg:text-[18px] ${
-                currentStep >= step ? "text-primary" : "text-[#C6C6C6]"
-              }`}
-            >
-              Step {step}
-            </span>
-          </div>
-        ))}
       </div>
 
       {currentStep === 1 && (
@@ -164,6 +169,8 @@ export default function SignupPage() {
             onChange={handleInputChange}
             label="Email"
             placeholder="Enter your email"
+            className="bg-[#F4F2FE]!"
+            prefixIcon={<EmailIcon />}
           />
 
           <Button
@@ -172,6 +179,7 @@ export default function SignupPage() {
             onClick={handleNextStep}
             disabled={!formData.email || !isValidEmail(formData.email)}
             width="full"
+            suffixIcon={<ArrowIcon className="rotate-90" />}
             className="rounded-xl!"
           />
 
@@ -184,15 +192,15 @@ export default function SignupPage() {
           {/* TODO: wire Google sign-up once @react-oauth/google + a client ID are configured. */}
           <button
             type="button"
-            className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white lg:h-12"
+            className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#F4F2FE] lg:h-12"
           >
-            <GoogleIcon />
-            <span className="text-sm font-normal text-muted-foreground lg:text-[16px]">
-              Sign in with Google.
+            <GoogleIcon className="h-5! w-5! shrink-0" />
+            <span className="text-sm! font-medium text-foreground ">
+              Continue with Google
             </span>
           </button>
 
-          <p className="m-0! text-sm font-normal text-foreground lg:text-[16px]">
+          <p className="m-0! text-[16px] font-medium text-foreground">
             Already have an account?{" "}
             <Link href="/login" className="text-primary">
               Log In
@@ -210,6 +218,8 @@ export default function SignupPage() {
               onChange={handleInputChange}
               label="First Name"
               placeholder="Enter First Name"
+              className="bg-[#F4F2FE]!"
+              prefixIcon={<ProfileIcon />}
             />
             <InputText
               name="lastName"
@@ -217,40 +227,63 @@ export default function SignupPage() {
               onChange={handleInputChange}
               label="Last Name"
               placeholder="Enter Last Name"
+              className="bg-[#F4F2FE]!"
             />
           </div>
 
-          <div className="flex flex-col items-start gap-2">
-            <label className="text-sm font-normal lg:text-[16px]">
-              Password
-            </label>
-            <Input.Password
+          <div className="flex w-full flex-col gap-2">
+            <InputText
               name="password"
+              type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={handleInputChange}
+              label="Password"
               placeholder="At least 8 characters."
-              className="w-full!"
+              className="bg-[#F4F2FE]!"
+              prefixIcon={<LockIcon />}
+              suffixIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  className="flex cursor-pointer items-center"
+                >
+                  {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+                </button>
+              }
             />
             {formData.password && !isValidPassword(formData.password) && (
-              <span className="text-xs text-danger">
+              <span className="text-left text-xs text-danger">
                 Minimum eight characters, at least one letter and one number.
               </span>
             )}
           </div>
 
-          <div className="flex flex-col items-start gap-2">
-            <label className="text-sm font-normal lg:text-[16px]">
-              Confirm Password
-            </label>
-            <Input.Password
+          <div className="flex w-full flex-col gap-2">
+            <InputText
               name="confirmPassword"
+              type={showConfirmPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={handleInputChange}
+              label="Confirm Password"
               placeholder="Confirm your password"
-              className="w-full!"
+              className="bg-[#F4F2FE]!"
+              prefixIcon={<LockIcon />}
+              suffixIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  aria-label={
+                    showConfirmPassword ? "Hide password" : "Show password"
+                  }
+                  className="flex cursor-pointer items-center"
+                >
+                  {showConfirmPassword ? <EyeSlashIcon /> : <EyeIcon />}
+                </button>
+              }
             />
             {passwordsMismatch && (
-              <span className="text-xs text-danger">
+              <span className="text-left text-xs text-danger">
                 The new passwords you entered do not match!
               </span>
             )}
@@ -263,24 +296,35 @@ export default function SignupPage() {
             value={formData.selectedCountry}
             onChange={(value) => handleSelectChange("selectedCountry", value)}
             showSearch
+            prefix={<FlagIcon />}
+            className={SELECT_ROUNDED_CLASS}
           />
 
-          <Button
-            type="primary"
-            label="Continue"
-            onClick={handleNextStep}
-            width="full"
-            className="rounded-xl!"
-            disabled={
-              !formData.firstName ||
-              !formData.lastName ||
-              !formData.password ||
-              !formData.confirmPassword ||
-              !formData.selectedCountry ||
-              passwordsMismatch ||
-              !isValidPassword(formData.password)
-            }
-          />
+          <div className="flex gap-3">
+            <Button
+              type="default"
+              label="Back"
+              onClick={handlePrevStep}
+              prefixIcon={<ArrowIcon className="rotate-270" />}
+              className="rounded-xl! shrink-0"
+            />
+            <Button
+              type="primary"
+              label="Continue"
+              onClick={handleNextStep}
+              suffixIcon={<ArrowIcon className="rotate-90" />}
+              className="rounded-xl! flex-1!"
+              disabled={
+                !formData.firstName ||
+                !formData.lastName ||
+                !formData.password ||
+                !formData.confirmPassword ||
+                !formData.selectedCountry ||
+                passwordsMismatch ||
+                !isValidPassword(formData.password)
+              }
+            />
+          </div>
         </div>
       )}
 
@@ -290,15 +334,18 @@ export default function SignupPage() {
           <Radio.Group
             value={formData.isFreelancer ? "freelancer" : "hiringManager"}
             onChange={(e) =>
-              handleSelectChange("isFreelancer", e.target.value === "freelancer")
+              handleSelectChange(
+                "isFreelancer",
+                e.target.value === "freelancer",
+              )
             }
             className="w-full"
           >
             <div className="flex w-full gap-3">
-              <div className="flex h-11 w-full items-center rounded-xl bg-white pl-4 lg:h-12">
+              <div className="flex h-11 w-full items-center rounded-full bg-[#F4F2FE] pl-4 lg:h-12">
                 <Radio value="freelancer">Freelancer</Radio>
               </div>
-              <div className="flex h-11 w-full items-center rounded-xl bg-white pl-4 lg:h-12">
+              <div className="flex h-11 w-full items-center rounded-full bg-[#F4F2FE] pl-4 lg:h-12">
                 <Radio value="hiringManager">Hiring Manager</Radio>
               </div>
             </div>
@@ -314,8 +361,11 @@ export default function SignupPage() {
                   placeholder="Select job role"
                   options={jobRoleOptions}
                   value={formData.primaryJobRole}
-                  onChange={(value) => handleSelectChange("primaryJobRole", value)}
+                  onChange={(value) =>
+                    handleSelectChange("primaryJobRole", value)
+                  }
                   showSearch
+                  className={SELECT_ROUNDED_CLASS}
                 />
               </div>
 
@@ -329,7 +379,7 @@ export default function SignupPage() {
                       key={index}
                       options={skillOptions}
                       placeholder={`Skill ${index + 1}`}
-                      className="max-w-[33%]!"
+                      className={`max-w-[33%]! ${SELECT_ROUNDED_CLASS}`}
                       value={formData.skills[index]}
                       onChange={(value) => handleSkillChange(index, value)}
                       showSearch
@@ -344,28 +394,41 @@ export default function SignupPage() {
             <Checkbox
               checked={formData.agreedToTerms}
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, agreedToTerms: e.target.checked }))
+                setFormData((prev) => ({
+                  ...prev,
+                  agreedToTerms: e.target.checked,
+                }))
               }
             />
             {/* TODO: wire these to the Terms/Privacy/Agreement drawers once the
                 signup-config CMS content (getSignUpConfigsApi) is ported. */}
             <span className="pl-2 text-sm lg:text-[16px]">
               Yes I understand and agree to the{" "}
-              <span className="text-primary">ProDoo&apos;s Terms of services.</span>
+              <span className="text-primary">
+                ProDoo&apos;s Terms of services.
+              </span>
               , including the{" "}
               <span className="text-primary">User agreement</span> and{" "}
               <span className="text-primary">Privacy policy</span>.
             </span>
           </div>
 
-          <Button
-            type="primary"
-            label="Create Account"
-            onClick={handleSubmit}
-            disabled={!formData.agreedToTerms}
-            width="full"
-            className="mt-6 rounded-xl!"
-          />
+          <div className="mt-6 flex gap-3">
+            <Button
+              type="default"
+              label="Back"
+              onClick={handlePrevStep}
+              prefixIcon={<ArrowIcon className="rotate-270" />}
+              className="rounded-xl! shrink-0 max-w-21!"
+            />
+            <Button
+              type="primary"
+              label="Create Account"
+              onClick={handleSubmit}
+              disabled={!formData.agreedToTerms}
+              className="rounded-xl! flex-1!"
+            />
+          </div>
         </div>
       )}
     </AuthLayout>

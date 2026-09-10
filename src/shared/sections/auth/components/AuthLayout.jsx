@@ -3,9 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/assets/icons/logo.svg";
-import ArrowLeft from "@/assets/icons/arrow-left.svg";
 
-export default function AuthLayout({ children, onBack, showBackArrow = true }) {
+export default function AuthLayout({ children, currentStep, totalSteps }) {
   return (
     <div className="relative flex w-full min-h-screen flex-col gap-3 p-3 md:flex-row bg-[#EAE5FC]">
       <Image
@@ -18,16 +17,26 @@ export default function AuthLayout({ children, onBack, showBackArrow = true }) {
       />
 
       <div className="relative flex w-full items-start justify-center rounded-2xl border-[1.5px] border-[#FFFFFF] bg-white pb-3 pt-6.5 lg:w-[44%] lg:items-center lg:pt-0">
-        {showBackArrow && (
-          <button
-            type="button"
-            onClick={onBack}
-            aria-label="Go back"
-            className="absolute left-6 top-6 hidden cursor-pointer md:block"
-          >
-            <ArrowLeft />
-          </button>
-        )}
+        <div className="absolute left-6 right-6 top-6 hidden items-center justify-between md:flex">
+          <Link href="/" aria-label="Prodoo home">
+            <Logo className="h-11! w-auto!" role="img" aria-label="Prodoo" />
+          </Link>
+
+          {totalSteps > 0 && currentStep > 0 && (
+            <div
+              className="relative flex h-11 w-11 items-center justify-center rounded-full transition-[background] duration-300 ease-in-out"
+              style={{
+                background: `conic-gradient(var(--color-primary) 0% ${
+                  (currentStep / totalSteps) * 100
+                }%, #DCD8FC ${(currentStep / totalSteps) * 100}% 100%)`,
+              }}
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-semibold text-primary">
+                {currentStep}
+              </span>
+            </div>
+          )}
+        </div>
 
         <div className="flex w-full flex-col px-3 text-center lg:w-[77%] lg:px-0">
           {children}
@@ -42,21 +51,6 @@ export default function AuthLayout({ children, onBack, showBackArrow = true }) {
           sizes="(min-width: 768px) 56vw, 0px"
           className="hidden object-cover md:block"
         />
-
-        <Link
-          href="/"
-          aria-label="Prodoo home"
-          className="relative z-10 md:ml-8 md:mt-8"
-        >
-          <Logo className="h-11! w-24!" role="img" aria-label="Prodoo" />
-        </Link>
-
-        <Link
-          href="/"
-          className="relative z-10 block text-sm font-medium text-primary md:hidden"
-        >
-          Go back
-        </Link>
       </div>
     </div>
   );
