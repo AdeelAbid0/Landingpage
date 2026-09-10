@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { message } from "antd";
 import { isValidEmail } from "@/lib/validators";
 import Button from "@/shared/ui/Button";
 import InputText from "@/shared/ui/InputText";
@@ -9,19 +10,32 @@ import EmailIcon from "@/assets/icons/sms.svg";
 import SmsIcon from "@/assets/icons/sms.svg";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 import AuthLayout from "./components/AuthLayout";
+import { useForgotPassword } from "./hooks/useForgotPassword";
 
 const TOTAL_STEPS = 2;
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
   const [isSent, setIsSent] = useState(false);
+  const forgotPassword = useForgotPassword();
 
   const handleEmailChange = (e) => setEmail(e.target.value);
 
   const handleSend = () => {
-    // TODO: POST to the real forgot-password endpoint once it is ported,
-    // then only flip to the confirmation screen on success.
-    setIsSent(true);
+    forgotPassword.mutate(email, {
+      onSuccess: (result) => {
+        if (result?.success) {
+          setIsSent(true);
+        } else {
+          message.error(
+            result?.message || "Something went wrong. Please try again.",
+          );
+        }
+      },
+      onError: () => {
+        message.error("Something went wrong. Please try again.");
+      },
+    });
   };
 
   const handleBack = () => setIsSent(false);
@@ -65,11 +79,11 @@ export default function ForgotPasswordPage() {
             />
           </div>
 
-          {/* TODO: wire to the real resend-code endpoint once it is ported. */}
           <button
             type="button"
             onClick={handleSend}
-            className="mt-5! text-[16px] font-semibold text-primary underline"
+            disabled={forgotPassword.isPending}
+            className="mt-5! text-[16px] font-semibold text-primary underline disabled:opacity-50"
           >
             Resend
           </button>
@@ -105,6 +119,7 @@ export default function ForgotPasswordPage() {
           label="Send"
           onClick={handleSend}
           disabled={!email || !isValidEmail(email)}
+          isLoading={forgotPassword.isPending}
           width="full"
           suffixIcon={<ArrowIcon className="rotate-90" />}
           className="rounded-xl!"

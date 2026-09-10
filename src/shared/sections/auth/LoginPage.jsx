@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Divider } from "antd";
+import { useRouter } from "next/navigation";
+import { Divider, message } from "antd";
 import { isValidEmail } from "@/lib/validators";
 import Button from "@/shared/ui/Button";
 import InputText from "@/shared/ui/InputText";
@@ -14,13 +15,16 @@ import SmsIcon from "@/assets/icons/sms.svg";
 import LockIcon from "@/assets/icons/lock.svg";
 import ArrowIcon from "@/assets/icons/arrow-outline.svg";
 import AuthLayout from "./components/AuthLayout";
+import { useLogin } from "./hooks/useLogin";
+import { useGoogleAuth } from "./hooks/useGoogleAuth";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [form, setForm] = useState({ email: "", password: "" });
   const [invalid, setInvalid] = useState({ email: false, password: false });
   const [isRemembered, setIsRemembered] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const login = useLogin();
 
   const handleFieldChange = (e) => {
     const { name, value } = e.target;
@@ -42,10 +46,55 @@ export default function LoginPage() {
       return;
     }
 
-    // TODO: wire to the real auth endpoint once /auth/login is ported to
-    // src/api/apiUrl.js (see loginAction.js in the prodoo-reactjs app).
-    setIsLoading(true);
+    login.mutate(
+      { email: form.email, password: form.password, isRemembered },
+      {
+        onSuccess: (data) => {
+          if (data?.success) {
+            // TODO: point at the real dashboard route once it exists in
+            // this app - the legacy prodoo-reactjs app hard-redirects to
+            // a hash-routed /#/dashboard behind the same domain.
+            router.push("/");
+          } else {
+            message.error(data?.message || "Invalid email or password.");
+          }
+        },
+        onError: () => {
+          message.error("Something went wrong. Please try again.");
+        },
+      },
+    );
   };
+
+  // Mirrors loginToCore's social-login branch in prodoo-reactjs's
+  // Login.jsx: log the google account straight in (email + google id as
+  // the password), and if that comes back "incorrect" (no account yet),
+  // hand the profile off to the signup page via sessionStorage - there's
+  // no location.state to carry it across a Next.js route push.
+  const handleGoogleSuccess = (profile) => {
+    const { email, id } = profile;
+
+    login.mutate(
+      { email, password: id },
+      {
+        onSuccess: (data) => {
+          if (data?.success) {
+            router.push("/");
+          } else if (data?.message?.includes("incorrect")) {
+            sessionStorage.setItem("googleCredentials", JSON.stringify(profile));
+            router.push("/signup");
+          } else {
+            message.error(data?.message || "Invalid email or password.");
+          }
+        },
+        onError: () => {
+          message.error("Something went wrong. Please try again.");
+        },
+      },
+    );
+  };
+
+  const handleGoogleSignIn = useGoogleAuth({ onSuccess: handleGoogleSuccess });
 
   return (
     <AuthLayout>
@@ -126,7 +175,7 @@ export default function LoginPage() {
           type="primary"
           htmlType="submit"
           label="Login"
-          isLoading={isLoading}
+          isLoading={login.isPending}
           width="full"
           suffixIcon={<ArrowIcon className="rotate-90" />}
           className="rounded-xl!"
@@ -138,9 +187,9 @@ export default function LoginPage() {
           </Divider>
         </div>
 
-        {/* TODO: wire Google sign-in once @react-oauth/google + a client ID are configured. */}
         <button
           type="button"
+          onClick={() => handleGoogleSignIn()}
           className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#F4F2FE] lg:h-12"
         >
           <GoogleIcon className="h-5! w-5! shrink-0" />
